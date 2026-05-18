@@ -1,0 +1,31 @@
+{
+  "name": "Vores Krydstogt 2026",
+  "short_name": "Krydstogt",
+  "description": "Krydstogt guide og planlægning",
+  "start_url": "/krydstogt/krydstogt-guide.html",
+  "scope": "/krydstogt/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#084d64",
+  "theme_color": "#084d64",
+  "lang": "da",
+  "icons": [
+    {
+      "src": "/krydstogt/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/krydstogt/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/krydstogt/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
