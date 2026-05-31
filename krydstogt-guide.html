@@ -4,23 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🚢 Vores Krydstogt 2026</title>
-
-<!-- PWA manifest -->
 <link rel="manifest" href="manifest.json">
-
-<!-- Theme farve (vises i browser UI og statusbar) -->
 <meta name="theme-color" content="#084d64">
-
-<!-- iOS / Safari PWA support -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Krydstogt">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-<!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-
-<!-- Service Worker registrering -->
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -30,7 +20,6 @@
     });
   }
 </script>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -47,396 +36,99 @@
     --success: #2a8c5a;
     --card-shadow: 0 4px 24px rgba(12,110,140,0.10);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--sand);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--sea-dark);
-    display: flex; gap: 0; overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--sand); color: var(--text); font-size: 15px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: var(--sea-dark); display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   nav::-webkit-scrollbar { display: none; }
-  .nav-btn {
-    flex: 0 0 auto;
-    padding: 12px 16px;
-    color: rgba(255,255,255,0.7);
-    border: none; background: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px; font-weight: 500;
-    cursor: pointer; white-space: nowrap;
-    border-bottom: 3px solid transparent;
-    transition: all .2s;
-  }
-  .nav-btn.active, .nav-btn:hover {
-    color: #fff;
-    border-bottom-color: var(--gold);
-  }
-
-  /* HERO */
-  .hero {
-    background: linear-gradient(160deg, var(--sea-dark) 0%, var(--sea) 60%, #1a8fa8 100%);
-    color: white;
-    padding: 36px 20px 28px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cpath d='M0 20 Q15 5 30 20 Q45 35 60 20' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='2'/%3E%3C/svg%3E") repeat;
-    animation: waves 8s linear infinite;
-  }
+  .nav-btn { flex: 0 0 auto; padding: 12px 16px; color: rgba(255,255,255,0.7); border: none; background: none; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap; border-bottom: 3px solid transparent; transition: all .2s; }
+  .nav-btn.active, .nav-btn:hover { color: #fff; border-bottom-color: var(--gold); }
+  .hero { background: linear-gradient(160deg, var(--sea-dark) 0%, var(--sea) 60%, #1a8fa8 100%); color: white; padding: 36px 20px 28px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cpath d='M0 20 Q15 5 30 20 Q45 35 60 20' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='2'/%3E%3C/svg%3E") repeat; animation: waves 8s linear infinite; }
   @keyframes waves { from{background-position:0 0} to{background-position:60px 0} }
-
   .hero-ship { font-size: 48px; margin-bottom: 8px; position: relative; }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(24px, 6vw, 38px);
-    font-weight: 700;
-    position: relative;
-  }
-  .hero-sub {
-    font-size: 14px;
-    color: rgba(255,255,255,0.8);
-    margin-top: 6px;
-    position: relative;
-  }
-  .hero-dates {
-    display: inline-flex; gap: 12px;
-    margin-top: 16px;
-    background: rgba(255,255,255,0.12);
-    border-radius: 20px;
-    padding: 8px 18px;
-    font-size: 13px;
-    position: relative;
-  }
-
-  /* PAGES */
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 6vw, 38px); font-weight: 700; position: relative; }
+  .hero-sub { font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 6px; position: relative; }
+  .hero-dates { display: inline-flex; gap: 12px; margin-top: 16px; background: rgba(255,255,255,0.12); border-radius: 20px; padding: 8px 18px; font-size: 13px; position: relative; }
   .page { display: none; padding: 16px; max-width: 680px; margin: 0 auto; }
   .page.active { display: block; }
-
-  /* CARDS */
-  .card {
-    background: white;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 16px;
-    box-shadow: var(--card-shadow);
-  }
-  .card-header {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 14px;
-  }
-  .card-icon {
-    width: 42px; height: 42px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
+  .card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: var(--card-shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .card-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
   .icon-sea { background: var(--sea-light); }
   .icon-gold { background: var(--gold-light); }
   .icon-red { background: #fdeee9; }
   .icon-green { background: #e8f5ee; }
-
-  .card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px; font-weight: 700;
-  }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; }
   .card-subtitle { font-size: 12px; color: var(--text-light); }
-
-  /* PORT HEADER */
-  .port-header {
-    background: linear-gradient(135deg, var(--sea-dark), var(--sea));
-    color: white;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 16px;
-  }
-  .port-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px; font-weight: 700;
-  }
-  .port-meta {
-    display: flex; flex-wrap: wrap; gap: 10px;
-    margin-top: 12px;
-  }
-  .port-badge {
-    background: rgba(255,255,255,0.15);
-    border-radius: 20px;
-    padding: 5px 12px;
-    font-size: 12px;
-  }
-
-  /* TIMELINE */
+  .port-header { background: linear-gradient(135deg, var(--sea-dark), var(--sea)); color: white; border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+  .port-header h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; }
+  .port-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .port-badge { background: rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 12px; font-size: 12px; }
   .timeline { position: relative; padding-left: 28px; }
-  .timeline::before {
-    content: '';
-    position: absolute; left: 8px; top: 8px; bottom: 8px;
-    width: 2px; background: var(--sea-light);
-  }
-  .tl-item {
-    position: relative;
-    margin-bottom: 20px;
-  }
-  .tl-dot {
-    position: absolute; left: -24px; top: 4px;
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    background: var(--sea);
-    border: 2px solid white;
-    box-shadow: 0 0 0 2px var(--sea-light);
-  }
-  .tl-time {
-    font-size: 11px; font-weight: 600;
-    color: var(--sea);
-    text-transform: uppercase;
-    letter-spacing: .5px;
-    margin-bottom: 2px;
-  }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: var(--sea-light); }
+  .tl-item { position: relative; margin-bottom: 20px; }
+  .tl-dot { position: absolute; left: -24px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--sea); border: 2px solid white; box-shadow: 0 0 0 2px var(--sea-light); }
+  .tl-time { font-size: 11px; font-weight: 600; color: var(--sea); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
   .tl-title { font-weight: 600; font-size: 14px; }
   .tl-desc { font-size: 13px; color: var(--text-light); margin-top: 2px; }
-
-  /* WARNING / TIP BOXES */
-  .warning {
-    background: #fff4f0;
-    border-left: 4px solid var(--danger);
-    border-radius: 0 10px 10px 0;
-    padding: 12px 14px;
-    margin: 10px 0;
-    font-size: 13px;
-  }
+  .warning { background: #fff4f0; border-left: 4px solid var(--danger); border-radius: 0 10px 10px 0; padding: 12px 14px; margin: 10px 0; font-size: 13px; }
   .warning strong { color: var(--danger); }
-  .tip {
-    background: #f0faf4;
-    border-left: 4px solid var(--success);
-    border-radius: 0 10px 10px 0;
-    padding: 12px 14px;
-    margin: 10px 0;
-    font-size: 13px;
-  }
+  .tip { background: #f0faf4; border-left: 4px solid var(--success); border-radius: 0 10px 10px 0; padding: 12px 14px; margin: 10px 0; font-size: 13px; }
   .tip strong { color: var(--success); }
-  .info {
-    background: var(--sea-light);
-    border-left: 4px solid var(--sea);
-    border-radius: 0 10px 10px 0;
-    padding: 12px 14px;
-    margin: 10px 0;
-    font-size: 13px;
-  }
-
-  /* PRIORITY STARS */
-  .priority {
-    display: inline-flex; gap: 2px;
-    font-size: 12px;
-  }
+  .info { background: var(--sea-light); border-left: 4px solid var(--sea); border-radius: 0 10px 10px 0; padding: 12px 14px; margin: 10px 0; font-size: 13px; }
+  .priority { display: inline-flex; gap: 2px; font-size: 12px; }
   .prio-must { color: var(--danger); }
   .prio-should { color: var(--gold); }
   .prio-skip { color: #bbb; }
-
-  /* RESTAURANT */
-  .resto-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid #f0f0f0;
-  }
+  .resto-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
   .resto-item:last-child { border-bottom: none; }
   .resto-emoji { font-size: 24px; flex-shrink: 0; }
   .resto-name { font-weight: 600; font-size: 14px; }
   .resto-desc { font-size: 12px; color: var(--text-light); }
-  .resto-price {
-    font-size: 11px;
-    background: var(--gold-light);
-    color: var(--sea-dark);
-    border-radius: 10px;
-    padding: 2px 8px;
-    display: inline-block;
-    margin-top: 3px;
-    font-weight: 500;
-  }
-  .resto-quote {
-    font-size: 12px;
-    font-style: italic;
-    color: var(--text-light);
-    background: #f8f8f8;
-    border-left: 3px solid var(--gold);
-    padding: 6px 10px;
-    border-radius: 0 6px 6px 0;
-    margin: 6px 0 4px;
-    line-height: 1.5;
-  }
-  .exp-review-block {
-    background: var(--sea-light);
-    border-radius: 12px;
-    padding: 12px 14px;
-    margin: 12px 0;
-  }
-  .exp-review-block .resto-quote {
-    background: white;
-    border-left-color: var(--sea);
-  }
-  .exp-review-header {
-    display: flex; align-items: center; gap: 8px;
-    margin-bottom: 8px; flex-wrap: wrap;
-  }
+  .resto-price { font-size: 11px; background: var(--gold-light); color: var(--sea-dark); border-radius: 10px; padding: 2px 8px; display: inline-block; margin-top: 3px; font-weight: 500; }
+  .resto-quote { font-size: 12px; font-style: italic; color: var(--text-light); background: #f8f8f8; border-left: 3px solid var(--gold); padding: 6px 10px; border-radius: 0 6px 6px 0; margin: 6px 0 4px; line-height: 1.5; }
+  .exp-review-block { background: var(--sea-light); border-radius: 12px; padding: 12px 14px; margin: 12px 0; }
+  .exp-review-block .resto-quote { background: white; border-left-color: var(--sea); }
+  .exp-review-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
   .exp-review-icon { font-size: 18px; }
   .exp-review-title { font-weight: 700; font-size: 14px; color: var(--sea-dark); }
   .exp-stars { font-size: 12px; color: var(--gold); margin-left: auto; }
   .exp-score { color: var(--text-light); font-style: normal; font-weight: 400; }
-
-  /* LINKS */
-  a {
-    color: var(--sea);
-    text-decoration: none;
-    font-weight: 500;
-  }
+  a { color: var(--sea); text-decoration: none; font-weight: 500; }
   a:hover { text-decoration: underline; }
-  .btn-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--sea-light);
-    color: var(--sea-dark);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 12px;
-    font-weight: 600;
-    margin: 4px 4px 4px 0;
-    transition: background .2s;
-  }
+  .btn-link { display: inline-flex; align-items: center; gap: 6px; background: var(--sea-light); color: var(--sea-dark); border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 600; margin: 4px 4px 4px 0; transition: background .2s; }
   .btn-link:hover { background: #c5e0ea; text-decoration: none; }
-  .btn-map {
-    background: #e8f0fe;
-    color: #1a56db;
-  }
-  .btn-book {
-    background: var(--gold-light);
-    color: var(--sea-dark);
-  }
-
-  /* SECTION LABEL */
-  .section-label {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--text-light);
-    margin: 18px 0 8px;
-  }
-
-  /* TRANSPORT TABLE */
-  .transport-row {
-    display: flex; justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 13px;
-    gap: 8px;
-  }
+  .btn-map { background: #e8f0fe; color: #1a56db; }
+  .btn-book { background: var(--gold-light); color: var(--sea-dark); }
+  .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-light); margin: 18px 0 8px; }
+  .transport-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; gap: 8px; }
   .transport-row:last-child { border-bottom: none; }
   .t-label { color: var(--text-light); flex: 1; }
   .t-val { font-weight: 500; text-align: right; }
-
-  /* CHECKLIST */
-  .check-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 13px;
-    cursor: pointer;
-  }
+  .check-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; cursor: pointer; }
   .check-item:last-child { border-bottom: none; }
-  .check-item input[type=checkbox] {
-    width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;
-    accent-color: var(--sea);
-  }
-  .check-item.checked .check-text {
-    text-decoration: line-through;
-    color: var(--text-light);
-  }
-
-  /* WIKI BOX */
-  .wiki-box {
-    background: #fafafa;
-    border: 1px solid #e8e8e8;
-    border-radius: 12px;
-    padding: 16px;
-    margin: 12px 0;
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.7;
-  }
-  .wiki-box h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: var(--sea-dark);
-  }
-  .wiki-badge {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-size: 10px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: .5px;
-    color: var(--text-light);
-    margin-bottom: 8px;
-  }
-
-  /* COLLAPSE */
-  .collapse-btn {
-    width: 100%; text-align: left;
-    background: none; border: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px; font-weight: 600;
-    color: var(--sea-dark);
-    padding: 10px 0;
-    cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid #eee;
-  }
+  .check-item input[type=checkbox] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; accent-color: var(--sea); }
+  .check-item.checked .check-text { text-decoration: line-through; color: var(--text-light); }
+  .wiki-box { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 12px; padding: 16px; margin: 12px 0; font-size: 13px; color: var(--text); line-height: 1.7; }
+  .wiki-box h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 8px; color: var(--sea-dark); }
+  .wiki-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: var(--text-light); margin-bottom: 8px; }
+  .collapse-btn { width: 100%; text-align: left; background: none; border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--sea-dark); padding: 10px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
   .collapse-btn .arrow { transition: transform .2s; font-size: 12px; }
   .collapse-btn.open .arrow { transform: rotate(180deg); }
   .collapse-content { display: none; padding: 10px 0 4px; }
   .collapse-content.open { display: block; }
-
-  /* OVERVIEW */
-  .port-list-item {
-    display: flex; align-items: center; gap: 14px;
-    padding: 12px 0;
-    border-bottom: 1px solid #f0f0f0;
-    cursor: pointer;
-  }
+  .port-list-item { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
   .port-list-item:last-child { border-bottom: none; }
   .port-flag { font-size: 24px; flex-shrink: 0; }
   .port-list-name { font-weight: 600; font-size: 14px; }
   .port-list-meta { font-size: 12px; color: var(--text-light); }
   .port-arrow { margin-left: auto; color: var(--sea); font-size: 18px; }
-
-  /* RATING TAG */
-  .tag {
-    display: inline-block;
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 11px;
-    font-weight: 600;
-    margin: 2px;
-  }
+  .tag { display: inline-block; border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 600; margin: 2px; }
   .tag-red { background: #fdeee9; color: var(--danger); }
   .tag-gold { background: var(--gold-light); color: #7a5c00; }
   .tag-green { background: #e8f5ee; color: var(--success); }
   .tag-sea { background: var(--sea-light); color: var(--sea-dark); }
-
-  @media (max-width: 380px) {
-    .hero h1 { font-size: 22px; }
-    .card { padding: 16px; }
-  }
+  @media (max-width: 380px) { .hero h1 { font-size: 22px; } .card { padding: 16px; } }
 </style>
 </head>
 <body>
@@ -447,7 +139,7 @@
   <h1>Vores Krydstogt 2026</h1>
   <div class="hero-sub">Sanne &amp; Bo · Middelhavet</div>
   <div class="hero-dates">
-    📅 11. juni — boarding 13. juni — hjem 18. juni
+    📅 11. juni — boarding 13. juni — hjem 20. juni
   </div>
 </div>
 
@@ -459,8 +151,10 @@
   <button class="nav-btn" onclick="showPage('rhodes')">⚔️ Rhodos</button>
   <button class="nav-btn" onclick="showPage('kusadasi')">🏺 Kusadasi</button>
   <button class="nav-btn" onclick="showPage('mykonos')">💨 Mykonos</button>
+  <button class="nav-btn" onclick="showPage('thessaloniki')">🏛️ Thessaloniki</button>
   <button class="nav-btn" onclick="showPage('packing')">🎒 Pakkeliste</button>
   <button class="nav-btn" onclick="showPage('tips')">💡 Tips</button>
+  <button class="nav-btn" onclick="showPage('weather')">🌤️ Vejr</button>
 </nav>
 
 <!-- ==================== OVERSIGT ==================== -->
@@ -470,7 +164,7 @@
       <div class="card-icon icon-sea">🗺️</div>
       <div>
         <div class="card-title">Rejseplan</div>
-        <div class="card-subtitle">11–18 juni 2026</div>
+        <div class="card-subtitle">11–20 juni 2026</div>
       </div>
     </div>
     <div class="timeline">
@@ -514,13 +208,25 @@
         <div class="tl-dot"></div>
         <div class="tl-time">17. juni · 07:00–18:00</div>
         <div class="tl-title">💨 Mykonos</div>
-        <div class="tl-desc">Tender / kaj · Chora, vindmøller, Little Venice</div>
+        <div class="tl-desc">Tender · Chora, vindmøller, Little Venice</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">18. juni · 09:00–21:00</div>
+        <div class="tl-title">🏛️ Thessaloniki</div>
+        <div class="tl-desc">Direktehavn · White Tower, byzantinske kirker, Modiano marked, Ano Poli</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">19. juni</div>
+        <div class="tl-title">🌊 På havet – havdag</div>
+        <div class="tl-desc">Afslappende dag ombord. Nyd skibets faciliteter.</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot" style="background:var(--gold)"></div>
-        <div class="tl-time">18. juni</div>
-        <div class="tl-title">🏁 Hjem — Athen</div>
-        <div class="tl-desc">Afslutning i Piraeus</div>
+        <div class="tl-time">20. juni · Ankomst 05:00</div>
+        <div class="tl-title">🏁 Hjem — Athen (Piraeus)</div>
+        <div class="tl-desc">Afslutning i Piraeus · Flyv hjem</div>
       </div>
     </div>
   </div>
@@ -539,6 +245,7 @@
     <div class="tip"><strong>✅ Efesos privat guidetur:</strong> Stærkt anbefalet. Historisk indsigt + sikker tidsplan.<br><a href="https://www.viator.com/Kusadasi-tours/Shore-Excursions/d4440-g12-c25" target="_blank">👉 Viator – Efesos ture</a></div>
     <div class="info"><strong>ℹ️ Rhodos:</strong> Old Town kræver ingen booking. Lindos-tur: book taxi/tur på forhånd.</div>
     <div class="info"><strong>ℹ️ Mykonos:</strong> Byvandring kræver ingen booking. Delos-færge: book på forhånd.</div>
+    <div class="info"><strong>ℹ️ Thessaloniki:</strong> Ingen forhåndsbooking nødvendig. White Tower billetter købes ved indgangen (€4 pp).</div>
   </div>
 
   <!-- Budget overview -->
@@ -555,8 +262,9 @@
     <div class="transport-row"><div class="t-label">⚔️ Rhodos</div><div class="t-val">€50–90 pp</div></div>
     <div class="transport-row"><div class="t-label">🏺 Kusadasi/Efesos</div><div class="t-val">€100–150 pp</div></div>
     <div class="transport-row"><div class="t-label">💨 Mykonos</div><div class="t-val">€60–100 pp</div></div>
+    <div class="transport-row"><div class="t-label">🏛️ Thessaloniki</div><div class="t-val">€30–60 pp</div></div>
     <div class="transport-row" style="border-top:2px solid #eee;margin-top:4px;font-weight:700">
-      <div class="t-label">TOTAL (vejledende)</div><div class="t-val">€350–560 pp</div>
+      <div class="t-label">TOTAL (vejledende)</div><div class="t-val">€380–620 pp</div>
     </div>
     <div class="tip"><strong>💡 Kontant tips:</strong> Tag €300 i EUR kontant + tyrkiske lira kan veksles i Kusadasi havn.</div>
   </div>
@@ -572,42 +280,32 @@
     </div>
     <div class="port-list-item" onclick="showPage('athens')">
       <div class="port-flag">🇬🇷</div>
-      <div>
-        <div class="port-list-name">Athen (Pre-cruise)</div>
-        <div class="port-list-meta">11–13 juni · Acropolis, Plaka, museer</div>
-      </div>
+      <div><div class="port-list-name">Athen (Pre-cruise)</div><div class="port-list-meta">11–13 juni · Acropolis, Plaka, museer</div></div>
       <div class="port-arrow">›</div>
     </div>
     <div class="port-list-item" onclick="showPage('santorini')">
       <div class="port-flag">🌋</div>
-      <div>
-        <div class="port-list-name">Santorini</div>
-        <div class="port-list-meta">14 juni · 07:00–22:00 · Tender port</div>
-      </div>
+      <div><div class="port-list-name">Santorini</div><div class="port-list-meta">14 juni · 07:00–22:00 · Tender port</div></div>
       <div class="port-arrow">›</div>
     </div>
     <div class="port-list-item" onclick="showPage('rhodes')">
       <div class="port-flag">⚔️</div>
-      <div>
-        <div class="port-list-name">Rhodos</div>
-        <div class="port-list-meta">15 juni · 09:00–19:00 · 10 timer</div>
-      </div>
+      <div><div class="port-list-name">Rhodos</div><div class="port-list-meta">15 juni · 09:00–19:00 · 10 timer</div></div>
       <div class="port-arrow">›</div>
     </div>
     <div class="port-list-item" onclick="showPage('kusadasi')">
       <div class="port-flag">🇹🇷</div>
-      <div>
-        <div class="port-list-name">Kusadasi / Efesos</div>
-        <div class="port-list-meta">16 juni · 08:00–20:00 · 12 timer</div>
-      </div>
+      <div><div class="port-list-name">Kusadasi / Efesos</div><div class="port-list-meta">16 juni · 08:00–20:00 · 12 timer</div></div>
       <div class="port-arrow">›</div>
     </div>
     <div class="port-list-item" onclick="showPage('mykonos')">
       <div class="port-flag">💨</div>
-      <div>
-        <div class="port-list-name">Mykonos</div>
-        <div class="port-list-meta">17 juni · 07:00–18:00 · 11 timer</div>
-      </div>
+      <div><div class="port-list-name">Mykonos</div><div class="port-list-meta">17 juni · 07:00–18:00 · 11 timer</div></div>
+      <div class="port-arrow">›</div>
+    </div>
+    <div class="port-list-item" onclick="showPage('thessaloniki')">
+      <div class="port-flag">🏛️</div>
+      <div><div class="port-list-name">Thessaloniki</div><div class="port-list-meta">18 juni · 09:00–21:00 · 12 timer · Direktehavn</div></div>
       <div class="port-arrow">›</div>
     </div>
   </div>
@@ -624,263 +322,96 @@
       <span class="port-badge">🚢 Boarding 13. juni 17:00</span>
     </div>
   </div>
-
-  <!-- Transport fra lufthavn -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-sea">🚌</div>
-      <div>
-        <div class="card-title">Fra lufthavn → Hotel</div>
-        <div class="card-subtitle">ATH → Candia Hotel</div>
-      </div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚇 Metro (linje 3 Kifisias)</div>
-      <div class="t-val">45 min · €9 pr. pers.</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚕 Taxi / Uber</div>
-      <div class="t-val">35–50 min · €35–45</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚌 X95 Syntagma bus</div>
-      <div class="t-val">60–90 min · €5,50</div>
-    </div>
+    <div class="card-header"><div class="card-icon icon-sea">🚌</div><div><div class="card-title">Fra lufthavn → Hotel</div><div class="card-subtitle">ATH → Candia Hotel</div></div></div>
+    <div class="transport-row"><div class="t-label">🚇 Metro (linje 3 Kifisias)</div><div class="t-val">45 min · €9 pr. pers.</div></div>
+    <div class="transport-row"><div class="t-label">🚕 Taxi / Uber</div><div class="t-val">35–50 min · €35–45</div></div>
+    <div class="transport-row"><div class="t-label">🚌 X95 Syntagma bus</div><div class="t-val">60–90 min · €5,50</div></div>
     <div class="tip"><strong>💡 Anbefaling:</strong> Metro er nemt og billigt. Skift ved Monastiraki og tag S-tog/Metro til Larissa Station (tæt på hotellet).</div>
     <div class="warning"><strong>⚠️ Pas på:</strong> Kun tag taxier fra officielle hvid/gule taxier eller Uber. Ulovlige taxier tager typisk €50–80.</div>
   </div>
-
-  <!-- Dag 1 -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">📅</div>
-      <div>
-        <div class="card-title">Dag 1 – 11. juni (Ankomst)</div>
-        <div class="card-subtitle">Ankomst 13:25 · Check-in eftermiddag</div>
-      </div>
-    </div>
+    <div class="card-header"><div class="card-icon icon-gold">📅</div><div><div class="card-title">Dag 1 – 11. juni (Ankomst)</div><div class="card-subtitle">Ankomst 13:25 · Check-in eftermiddag</div></div></div>
     <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">15:00–17:00</div>
-        <div class="tl-title">Check-in + frisk op</div>
-        <div class="tl-desc">Nyd tagterrassen på Candia med Acropolis-udsigt. Bestil et glas vin og tag det roligt.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">17:30–20:00</div>
-        <div class="tl-title">Første gåtur – Monastiraki + Plaka</div>
-        <div class="tl-desc">Metro to stop til Monastiraki (linje 3). Vandring langs med Andrianou Street, Plaka. Se Hadriansbuen.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">20:30</div>
-        <div class="tl-title">Aftensmad – Kuzina (udsigt)</div>
-        <div class="tl-desc">Nær Ancient Agora · Tagterrasse med Acropolis-udsigt · Reservér på forhånd!</div>
-      </div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:00–17:00</div><div class="tl-title">Check-in + frisk op</div><div class="tl-desc">Nyd tagterrassen på Candia med Acropolis-udsigt.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:30–20:00</div><div class="tl-title">Første gåtur – Monastiraki + Plaka</div><div class="tl-desc">Metro to stop til Monastiraki (linje 3). Vandring langs Andrianou Street, Plaka. Se Hadriansbuen.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20:30</div><div class="tl-title">Aftensmad – Kuzina (udsigt)</div><div class="tl-desc">Nær Ancient Agora · Tagterrasse med Acropolis-udsigt · Reservér på forhånd!</div></div>
     </div>
     <a href="https://www.kuzina.gr" target="_blank" class="btn-link">🍽️ Kuzina Restaurant</a>
     <a href="https://maps.google.com/?q=Kuzina+Athens" target="_blank" class="btn-link btn-map">📍 Google Maps</a>
   </div>
-
-  <!-- Dag 2 -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">📅</div>
-      <div>
-        <div class="card-title">Dag 2 – 12. juni (Acropolis dag)</div>
-        <div class="card-subtitle">Den vigtigste dag i Athen</div>
-      </div>
-    </div>
-    <div class="warning"><strong>⚠️ Book billetter nu!</strong> Acropolis er reservationspligtig. Sommer = udsolgt på dagen. Tidslot 08:00 anbefales – undgå middagssolen.</div>
+    <div class="card-header"><div class="card-icon icon-gold">📅</div><div><div class="card-title">Dag 2 – 12. juni (Acropolis dag)</div><div class="card-subtitle">Den vigtigste dag i Athen</div></div></div>
+    <div class="warning"><strong>⚠️ Book billetter nu!</strong> Acropolis er reservationspligtig. Sommer = udsolgt på dagen. Tidslot 08:00 anbefales.</div>
     <a href="https://etickets.tap.gr" target="_blank" class="btn-link btn-book">🎟️ Køb Acropolis billetter (etickets.tap.gr)</a>
-
-    <!-- Acropolis Experience Reviews -->
     <div class="exp-review-block">
-      <div class="exp-review-header">
-        <span class="exp-review-icon">🏛️</span>
-        <span class="exp-review-title">Acropolis + Parthenon</span>
-        <span class="exp-stars">★★★★★ <span class="exp-score">5/5 · UNESCO</span></span>
-      </div>
-      <div class="resto-quote">"Et besøg i Athen uden Akropolis er som at gå i kirke uden at se alteret. Udsigten over Athen fra enhver side er fantastisk, og ruinerne er betagende når man tænker på al den historie der skete her." – TripAdvisor</div>
-      <div class="resto-quote">"Gå så tidligt som muligt for rene fotos og færre mennesker. Vær forberedt på ujævnt underlag og meget sol uden skygge. Tag vand og hat." – TripAdvisor 2026</div>
+      <div class="exp-review-header"><span class="exp-review-icon">🏛️</span><span class="exp-review-title">Acropolis + Parthenon</span><span class="exp-stars">★★★★★ <span class="exp-score">5/5 · UNESCO</span></span></div>
+      <div class="resto-quote">"Et besøg i Athen uden Akropolis er som at gå i kirke uden at se alteret. Udsigten over Athen fra enhver side er fantastisk." – TripAdvisor</div>
+      <div class="resto-quote">"Gå så tidligt som muligt for rene fotos og færre mennesker. Vær forberedt på ujævnt underlag og meget sol. Tag vand og hat." – TripAdvisor 2026</div>
       <div style="margin-top:6px">
-        <a href="https://www.tripadvisor.com/Attraction_Review-g189400-d198706-Reviews-Acropolis-Athens_Attica.html" target="_blank" class="btn-link">🟢 TripAdvisor – Acropolis</a>
-        <a href="https://da.wikipedia.org/wiki/Akropolis" target="_blank" class="btn-link">📚 Wikipedia</a>
         <a href="https://maps.google.com/?q=Acropolis+Athens" target="_blank" class="btn-link btn-map">📍 Maps</a>
+        <a href="https://da.wikipedia.org/wiki/Akropolis" target="_blank" class="btn-link">📚 Wikipedia</a>
       </div>
     </div>
-
     <div class="exp-review-block">
-      <div class="exp-review-header">
-        <span class="exp-review-icon">🏺</span>
-        <span class="exp-review-title">Acropolis Museum</span>
-        <span class="exp-stars">★★★★★ <span class="exp-score">5/5 · Verdenklasse</span></span>
-      </div>
-      <div class="resto-quote">"Museet er rummeligt, roligt og velgennemtænkt opbygget – genstandene taler for sig selv. Mængden af information er præcis passende til at give kontekst uden at være overvældende. Gå hertil direkte efter Akropolis og køl ned i luftkonditioneringen." – TripAdvisor, UK-familie</div>
-      <div class="resto-quote">"Gå ned til udgravningsmuseet under bygningen – det er inkluderet i billetten og viser et begravt athensk kvarter fra oldtiden. Et skjult highlight." – TripAdvisor</div>
-      <div style="margin-top:6px">
-        <a href="https://www.tripadvisor.com/Attraction_Review-g189400-d735521-Reviews-Acropolis_Museum-Athens_Attica.html" target="_blank" class="btn-link">🟢 TripAdvisor – Museum</a>
-        <a href="https://da.wikipedia.org/wiki/Akropolis-museet" target="_blank" class="btn-link">📚 Wikipedia</a>
-        <a href="https://maps.google.com/?q=Acropolis+Museum+Athens" target="_blank" class="btn-link btn-map">📍 Maps</a>
-      </div>
+      <div class="exp-review-header"><span class="exp-review-icon">🏺</span><span class="exp-review-title">Acropolis Museum</span><span class="exp-stars">★★★★★ <span class="exp-score">Verdensklasse</span></span></div>
+      <div class="resto-quote">"Museet er rummeligt og velgennemtænkt – genstandene taler for sig selv. Gå hertil direkte efter Akropolis og køl ned i luftkonditioneringen." – TripAdvisor</div>
+      <div style="margin-top:6px"><a href="https://maps.google.com/?q=Acropolis+Museum+Athens" target="_blank" class="btn-link btn-map">📍 Maps</a></div>
     </div>
-
     <div class="timeline" style="margin-top:14px">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">07:30</div>
-        <div class="tl-title">Tidlig morgenmad på hotellets tagterrasse</div>
-        <div class="tl-desc">Lys, frisk, Acropolis-udsigt – perfekt start</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">08:30–11:30</div>
-        <div class="tl-title">⭐ Acropolis + Parthenon</div>
-        <div class="tl-desc">Tidligst ind = mindst folk. Odeon af Herodes Atticus, Propylæa, Erechtheion, Parthenon. Download Rick Steves' gratis lydrundtur.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">11:30–13:00</div>
-        <div class="tl-title">⭐ Acropolis Museum</div>
-        <div class="tl-desc">Et af verdens bedste museer. Luftkonditioneret. €10 pp. <strong>Kan ikke springes over!</strong></div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">13:00–14:30</div>
-        <div class="tl-title">Frokost i Plaka</div>
-        <div class="tl-desc">To Kati Allo – hemmelig familietaverna ved Acropolis Museum. Ingen menu, hjemmelavet mad. En perle.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">15:00–17:30</div>
-        <div class="tl-title">Anafiotika + Ancient Agora</div>
-        <div class="tl-desc">Anafiotika = Kykladisk minisogn midt i Athen. Ancient Agora med Hephaistostemplet.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">19:00–21:00</div>
-        <div class="tl-title">Aftensmad + Athen Nightlife</div>
-        <div class="tl-desc">Karamanlidika tou Fani – pålæg, charcuteri, vin i historisk interiør. Eller A for Athens rooftop bar for en cocktail med udsigt.</div>
-      </div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">07:30</div><div class="tl-title">Tidlig morgenmad på hotellets tagterrasse</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">08:30–11:30</div><div class="tl-title">⭐ Acropolis + Parthenon</div><div class="tl-desc">Tidligst ind = mindst folk. Download Rick Steves' gratis lydrundtur.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">11:30–13:00</div><div class="tl-title">⭐ Acropolis Museum</div><div class="tl-desc">€10 pp · Luftkonditioneret · Kan ikke springes over!</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13:00–14:30</div><div class="tl-title">Frokost i Plaka</div><div class="tl-desc">To Kati Allo – hemmelig familietaverna ved Acropolis Museum.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:00–17:30</div><div class="tl-title">Anafiotika + Ancient Agora</div><div class="tl-desc">Anafiotika = Kykladisk minisogn midt i Athen.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">19:00–21:00</div><div class="tl-title">Karamanlidika tou Fani – pålæg, vin, historisk interiør</div></div>
     </div>
     <div class="section-label">Restauranter Athen</div>
-
     <div class="resto-item">
       <div class="resto-emoji">🍷</div>
       <div>
-        <div class="resto-name">Kuzina <span style="color:#f5a623">★★★★★</span> <span style="font-size:11px;color:#888">4.5/5 · Michelin-anbefalet</span></div>
-        <div class="resto-desc">Tagterrasse · Acropolis-udsigt · Moderne gresk køkken · Adrianou 9, Thissio</div>
-        <div class="resto-quote">"Vores aftensmad på Kuzina var uden tvivl den bedste aften på hele Athen-turen. Personalet arrangerede et tagterrassebord med perfekt udsigt til Akropolis." – TripAdvisor 2026</div>
+        <div class="resto-name">Kuzina <span style="color:#f5a623">★★★★★</span></div>
+        <div class="resto-desc">Tagterrasse · Acropolis-udsigt · Moderne gresk · Adrianou 9</div>
+        <div class="resto-quote">"Vores aftensmad på Kuzina var uden tvivl den bedste aften på hele Athen-turen." – TripAdvisor 2026</div>
         <div><span class="resto-price">€€€ · €30–35 pp · Reservér!</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g189400-d1092052-Reviews-Kuzina-Athens_Attica.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
-          <a href="https://www.kuzina.gr" target="_blank" class="btn-link">🌐 Hjemmeside</a>
-          <a href="https://maps.google.com/?q=Kuzina+Athens+Adrianou" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
+        <div style="margin-top:6px"><a href="https://www.kuzina.gr" target="_blank" class="btn-link">🌐 Hjemmeside</a><a href="https://maps.google.com/?q=Kuzina+Athens+Adrianou" target="_blank" class="btn-link btn-map">📍 Maps</a></div>
       </div>
     </div>
-
-    <div class="resto-item">
-      <div class="resto-emoji">🥘</div>
-      <div>
-        <div class="resto-name">To Kati Allo <span style="color:#f5a623">★★★★★</span> <span style="font-size:11px;color:#888">Lokal hemmelighed</span></div>
-        <div class="resto-desc">Familietaverna · Hjemmelavet mad · Ingen fastmenu · Tæt på Acropolis Museum · Ingen hjemmeside</div>
-        <div class="resto-quote">"En lille familiedrevet taverna uden Instagram og uden hjemmeside – gemt bag en sidegade tæt på Acropolis Museum. Maden er enkel, hjemmelavet og muligvis det bedste måltid du får i Athen." – Time Out Athens</div>
-        <div><span class="resto-price">€€ · Walk-in · Kontant foretrukket</span></div>
-        <div style="margin-top:6px">
-          <a href="https://maps.google.com/?q=To+Kati+Allo+Athens+Acropolis+Museum" target="_blank" class="btn-link btn-map">📍 Find den på Maps</a>
-        </div>
-      </div>
-    </div>
-
     <div class="resto-item">
       <div class="resto-emoji">🍸</div>
       <div>
         <div class="resto-name">A for Athens (Rooftop Bar) <span style="color:#f5a623">★★★★</span></div>
-        <div class="resto-desc">Cocktailbar med panoramaudsigt til Acropolis · Monastiraki Square · Aftensstemning</div>
-        <div class="resto-quote">"Stig op til rooftop-baren og nyd en cocktail mens Akropolis langsomt tændes i det blide aftenslys. Et af Athens mest romantiske udsigts-steder." – rejseblogger-anmeldelse</div>
-        <div><span class="resto-price">€€€ · Drinks fra €12 · Book bord til solnedgang</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g189400-d2395153-Reviews-A_for_Athens-Athens_Attica.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
-          <a href="https://maps.google.com/?q=A+for+Athens+rooftop+bar+Monastiraki" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="resto-item">
-      <div class="resto-emoji">🥩</div>
-      <div>
-        <div class="resto-name">Karamanlidika tou Fani <span style="color:#f5a623">★★★★½</span></div>
-        <div class="resto-desc">Charcuteri-butik + taverna · Historisk interiør med hængende pølser og krydderier · Evripidou 52</div>
-        <div class="resto-quote">"En autentisk oplevelse: hylder med lokale delikatesser, hængende kødprodukter og et menykort fyldt med traditionelle smage fra hele Grækenland. Vinen er fantastisk." – TripAdvisor</div>
-        <div><span class="resto-price">€€ · Reservér aftenbord</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g189400-d1660918-Reviews-Karamanlidika_tou_Fani-Athens_Attica.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
-          <a href="https://maps.google.com/?q=Karamanlidika+tou+Fani+Athens" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
+        <div class="resto-desc">Cocktailbar med panoramaudsigt til Acropolis · Monastiraki Square</div>
+        <div class="resto-quote">"Nyd en cocktail mens Akropolis langsomt tændes i det blide aftenslys." – rejseblogger</div>
+        <div><span class="resto-price">€€€ · Drinks fra €12</span></div>
+        <div style="margin-top:6px"><a href="https://maps.google.com/?q=A+for+Athens+rooftop+bar+Monastiraki" target="_blank" class="btn-link btn-map">📍 Maps</a></div>
       </div>
     </div>
   </div>
-
-  <!-- Dag 3 - boarding -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">📅</div>
-      <div>
-        <div class="card-title">Dag 3 – 13. juni (Boarding dag)</div>
-        <div class="card-subtitle">Afgang til Piraeus havn ca. 14:00</div>
-      </div>
-    </div>
+    <div class="card-header"><div class="card-icon icon-gold">📅</div><div><div class="card-title">Dag 3 – 13. juni (Boarding dag)</div><div class="card-subtitle">Afgang til Piraeus havn ca. 14:00</div></div></div>
     <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">09:00–12:00</div>
-        <div class="tl-title">Morgengåtur Syntagma + National Garden</div>
-        <div class="tl-desc">Parlamentet, vagtskiftet, National Garden. Fredelig morgentur.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">12:00</div>
-        <div class="tl-title">Check-out + Frokost</div>
-        <div class="tl-desc">Let frokost i Monastiraki – Tzatziki, spanakopita, kold øl.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">13:30–14:30</div>
-        <div class="tl-title">Transport → Piraeus havn</div>
-        <div class="tl-desc">Metro linje 1 direkte fra Monastiraki → Piraeus (35 min, €1.40). Eller Uber €15–20.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot" style="background:var(--gold)"></div>
-        <div class="tl-time">17:00</div>
-        <div class="tl-title">🚢 Skibet afgår! Buon viaggio!</div>
-        <div class="tl-desc">Tag en drink på dækket og nyd Atenernes kystlinje forsvinde.</div>
-      </div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">09:00–12:00</div><div class="tl-title">Morgengåtur Syntagma + National Garden</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:00</div><div class="tl-title">Check-out + Frokost i Monastiraki</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13:30–14:30</div><div class="tl-title">Transport → Piraeus havn</div><div class="tl-desc">Metro linje 1 fra Monastiraki → Piraeus (35 min, €1.40). Eller Uber €15–20.</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--gold)"></div><div class="tl-time">17:00</div><div class="tl-title">🚢 Skibet afgår! Buon viaggio!</div></div>
     </div>
   </div>
-
-  <!-- Wiki -->
   <div class="card">
-    <button class="collapse-btn" onclick="toggleCollapse(this)">
-      📖 Om Athen – historisk baggrund <span class="arrow">▼</span>
-    </button>
+    <button class="collapse-btn" onclick="toggleCollapse(this)">📖 Om Athen – historisk baggrund <span class="arrow">▼</span></button>
     <div class="collapse-content">
       <div class="wiki-box">
-        <div class="wiki-badge">🏛️ Wikipedia · Dansk oversættelse</div>
+        <div class="wiki-badge">🏛️ Wikipedia</div>
         <h4>Athen (Αθήνα)</h4>
-        <p>Athen er Grækenlands hovedstad og en af verdens ældste byer med mere end 3.400 års uafbrudt beboelse. Byen er opkaldt efter gudinden Athena og var centrum for den antikke græske civilisation. Demokratiet blev opfundet her i 500-tallet f.Kr., og filosoffer som Sokrates, Platon og Aristoteles levede og virkede i denne by.</p>
-        <p style="margin-top:8px">Akropolis – "den høje by" – er en klippebakke 156 meter over havet, kronet med Parthenon (447–432 f.Kr.), opbygget til ære for Athena. Bygningen er et mesterværk af dorisk arkitektur og symboliserer den vestlige civilisations fødsel. Befolkningen i Athen er i dag ca. 3,6 millioner og er verdensstaden der forbinder oldtid og modernitet.</p>
+        <p>Athen er Grækenlands hovedstad og en af verdens ældste byer med mere end 3.400 års uafbrudt beboelse. Demokratiet blev opfundet her i 500-tallet f.Kr., og filosoffer som Sokrates, Platon og Aristoteles levede her. Akropolis kronet med Parthenon (447–432 f.Kr.) er et mesterværk af dorisk arkitektur.</p>
         <a href="https://da.wikipedia.org/wiki/Athen" target="_blank" class="btn-link">📚 Læs mere på Wikipedia</a>
       </div>
     </div>
   </div>
-
   <div class="card">
     <div class="section-label">Nyttige links</div>
-    <a href="https://maps.google.com/?q=Candia+Hotel+Athens" target="_blank" class="btn-link btn-map">📍 Candia Hotel på Maps</a>
+    <a href="https://maps.google.com/?q=Candia+Hotel+Athens" target="_blank" class="btn-link btn-map">📍 Candia Hotel</a>
     <a href="https://maps.google.com/?q=Acropolis+Athens" target="_blank" class="btn-link btn-map">📍 Acropolis</a>
-    <a href="https://maps.google.com/?q=Acropolis+Museum+Athens" target="_blank" class="btn-link btn-map">📍 Acropolis Museum</a>
     <a href="https://maps.google.com/?q=Monastiraki+Athens" target="_blank" class="btn-link btn-map">📍 Monastiraki</a>
     <a href="https://etickets.tap.gr" target="_blank" class="btn-link btn-book">🎟️ Bestil Acropolis billetter</a>
   </div>
@@ -897,251 +428,79 @@
       <span class="port-badge">🛥️ Cable car</span>
     </div>
   </div>
-
-  <!-- Kritisk info -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-red">⚠️</div>
-      <div>
-        <div class="card-title">Kritisk info – Læs dette først!</div>
-        <div class="card-subtitle">Santorini er den sværeste logistiske havn</div>
-      </div>
-    </div>
-    <div class="warning">
-      <strong>⚠️ Cable car kø:</strong> Skibet ankommer kl. 07:00 – VÆR BLANDT DE FØRSTE I TENDER-KØEN. Kø til cable car kan blive 45–120 min hvis 3+ skibe er i havn. Køb RETUR-billet i toppen med det samme du er oppe.
-    </div>
-    <div class="info">
-      <strong>📋 Cable car pris 2026:</strong> ca. €10 pr. person pr. vej · Cash only · 3–5 min transport · Old Port → Fira
-    </div>
-    <div class="tip">
-      <strong>💡 Backup:</strong> 588 trapper op = 30–40 min gåtur (stejle, men smukke). Fungerer som backup hvis kø > 45 min. I er i god form – brug det!
-    </div>
+    <div class="card-header"><div class="card-icon icon-red">⚠️</div><div><div class="card-title">Kritisk info – Læs dette først!</div><div class="card-subtitle">Santorini er den sværeste logistiske havn</div></div></div>
+    <div class="warning"><strong>⚠️ Cable car kø:</strong> VÆR BLANDT DE FØRSTE I TENDER-KØEN kl. 07:00. Kø til cable car kan blive 45–120 min. Køb RETUR-billet i toppen.</div>
+    <div class="info"><strong>📋 Cable car pris 2026:</strong> ca. €10 pr. person pr. vej · Cash only · Old Port → Fira</div>
+    <div class="tip"><strong>💡 Backup:</strong> 588 trapper op = 30–40 min gåtur. Fungerer som backup hvis kø > 45 min.</div>
   </div>
-
-  <!-- Transport -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-sea">🚌</div>
-      <div>
-        <div class="card-title">Transport på Santorini</div>
-        <div class="card-subtitle">Fra Old Port og rundt på øen</div>
-      </div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🛥️ Tender: Skib → Old Port</div>
-      <div class="t-val">10–15 min</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚡 Cable car: Old Port → Fira</div>
-      <div class="t-val">3–5 min · €10/person</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚶 Trapper op: Old Port → Fira</div>
-      <div class="t-val">30–40 min · 588 trin</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚌 Bus: Fira → Oia</div>
-      <div class="t-val">25 min · €2</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚕 Taxi: Fira → Oia</div>
-      <div class="t-val">15 min · €20–25</div>
-    </div>
-    <a href="https://goo.gl/maps/santorini-old-port" target="_blank" class="btn-link btn-map">📍 Old Port Santorini</a>
-    <a href="https://maps.google.com/?q=Oia+Santorini" target="_blank" class="btn-link btn-map">📍 Oia</a>
-    <a href="https://maps.google.com/?q=Fira+Santorini" target="_blank" class="btn-link btn-map">📍 Fira</a>
+    <div class="card-header"><div class="card-icon icon-sea">🚌</div><div><div class="card-title">Transport på Santorini</div></div></div>
+    <div class="transport-row"><div class="t-label">🛥️ Tender: Skib → Old Port</div><div class="t-val">10–15 min</div></div>
+    <div class="transport-row"><div class="t-label">🚡 Cable car: Old Port → Fira</div><div class="t-val">3–5 min · €10/person</div></div>
+    <div class="transport-row"><div class="t-label">🚶 Trapper op</div><div class="t-val">30–40 min · 588 trin</div></div>
+    <div class="transport-row"><div class="t-label">🚌 Bus: Fira → Oia</div><div class="t-val">25 min · €2</div></div>
+    <div class="transport-row"><div class="t-label">🚕 Taxi: Fira → Oia</div><div class="t-val">15 min · €20–25</div></div>
   </div>
-
-  <!-- Dagsprogram -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">📅</div>
-      <div>
-        <div class="card-title">Dagsprogram – 14. juni</div>
-        <div class="card-subtitle">Max oplevelse på 15 timer</div>
-      </div>
-    </div>
+    <div class="card-header"><div class="card-icon icon-gold">📅</div><div><div class="card-title">Dagsprogram – 14. juni</div></div></div>
     <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">06:45</div>
-        <div class="tl-title">Stå op – VÆR KLAR TIL TENDER</div>
-        <div class="tl-desc">Morgenmad på skibet. Værd at ofre en tidlig start her.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">07:15–08:00</div>
-        <div class="tl-title">Tender + Cable car</div>
-        <div class="tl-desc">Bliv tidlig i tender-køen. Direkte til cable car. KØB RETUR-BILLET STRAKS.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">08:00–10:00</div>
-        <div class="tl-title">⭐ Fira – caldera-promenaden</div>
-        <div class="tl-desc">Morgenstemning med færre turister. Gå langs caldera-kanten til Firostefani og Imerovigli (5 km, 1–1,5 t). Spektakulære udsigter!</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">10:30–12:00</div>
-        <div class="tl-title">Bus/taxi til Oia</div>
-        <div class="tl-desc">Tag bussen (kl. 10) mod Oia. Vandring i de smalle gader inden turisterne fylder op.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">12:00–14:00</div>
-        <div class="tl-title">🍷 Frokost i Oia med caldera-udsigt</div>
-        <div class="tl-desc">Assyrtiko-vin (lokal Santorini drue) + frisk fisk. Se restaurantlisten nedenfor.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">14:30–17:00</div>
-        <div class="tl-title">Vandring: Oia → Fira (caldera-sti)</div>
-        <div class="tl-desc">9 km · Ca. 3 timer · Smuk sti langs caldera-kanten. En af de smukkeste vandringsruter i verden. Tag vand og solcreme!</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">17:00–18:30</div>
-        <div class="tl-title">Afkøling + vin i Fira</div>
-        <div class="tl-desc">Nyd Assyrtiko-vin på en caldera-terrasse. Smuk eftermiddag.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">19:30 senest</div>
-        <div class="tl-title">⚠️ Cable car ned – VIGTIG TIMING</div>
-        <div class="tl-desc">Vær ved cable car senest 90 min før skibets afgang (kl. 22:00). Dvs. kl. 20:30 til Old Port. Kø kan opstå!</div>
-      </div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">06:45</div><div class="tl-title">Stå op – VÆR KLAR TIL TENDER</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">07:15–08:00</div><div class="tl-title">Tender + Cable car</div><div class="tl-desc">KØB RETUR-BILLET STRAKS.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">08:00–10:00</div><div class="tl-title">⭐ Fira – caldera-promenaden</div><div class="tl-desc">Morgenstemning med færre turister. Gå til Firostefani og Imerovigli (5 km).</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">10:30–12:00</div><div class="tl-title">Bus/taxi til Oia</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:00–14:00</div><div class="tl-title">🍷 Frokost i Oia med caldera-udsigt</div><div class="tl-desc">Assyrtiko-vin + frisk fisk.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14:30–17:00</div><div class="tl-title">Vandring: Oia → Fira (caldera-sti)</div><div class="tl-desc">9 km · Ca. 3 timer · Tag vand og solcreme!</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:00–18:30</div><div class="tl-title">Afkøling + Assyrtiko-vin i Fira</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--danger)"></div><div class="tl-time">⚠️ 19:30 senest</div><div class="tl-title">Cable car ned – kl. 22:00 afgang</div></div>
     </div>
-
-    <!-- Santorini Experience Reviews -->
     <div class="exp-review-block">
-      <div class="exp-review-header">
-        <span class="exp-review-icon">🥾</span>
-        <span class="exp-review-title">Caldera-vandring: Oia → Fira</span>
-        <span class="exp-stars">★★★★★ <span class="exp-score">En af verdens smukkeste ruter</span></span>
-      </div>
-      <div class="resto-quote">"Vandringen gav spektakulære udsigter og var en utrolig oplevelse. Tidlig start kort efter solopgang hjalp enormt med at undgå menneskemasserne. Skaros Rock er et absolut highlight langs stien – værd at tage en lille omvej for." – TripAdvisor</div>
-      <div class="resto-quote">"Vi elskede denne vandring! 4,5 miles, tog os 1 time 45 min i raskt tempo. Stien er godt markeret. Utrolig smuk – vi tog hundredevis af fotos!" – TripAdvisor-par</div>
-      <div class="info" style="font-size:12px;margin:6px 0">📏 <strong>9 km · ~3 timer · Ingen skygge · Tag 1,5L vand pr. person + solhat</strong></div>
-      <div>
-        <a href="https://www.tripadvisor.com/Attraction_Review-g189433-d6898520-Reviews-Hike_Fira_Oia-Santorini_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor – Vandreruten</a>
-        <a href="https://da.wikipedia.org/wiki/Santorini" target="_blank" class="btn-link">📚 Wikipedia</a>
-      </div>
-    </div>
-
-    <div class="exp-review-block">
-      <div class="exp-review-header">
-        <span class="exp-review-icon">🌅</span>
-        <span class="exp-review-title">Oia – landsbyen og kanten</span>
-        <span class="exp-stars">★★★★★ <span class="exp-score">Verdens mest fotograferede solnedgang</span></span>
-      </div>
-      <div class="resto-quote">"Oia er simpelthen overvældende smukt – de hvidkalkede huse, de blå kupler og udsigten ud over calderaen. Det er noget man bærer med sig resten af livet." – rejsende, TripAdvisor</div>
-      <div class="info" style="font-size:12px;margin:6px 0">💡 <strong>Tip:</strong> Gå i baggaderne væk fra hovedstien for at finde de stille smukke hjørner – og undslippe menneskemassen.</div>
-      <div>
-        <a href="https://www.tripadvisor.com/Attraction_Review-g482941-d482959-Reviews-Oia-Santorini_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor – Oia</a>
-        <a href="https://da.wikipedia.org/wiki/Oia,_Santorini" target="_blank" class="btn-link">📚 Wikipedia</a>
-        <a href="https://maps.google.com/?q=Oia+Santorini" target="_blank" class="btn-link btn-map">📍 Maps</a>
-      </div>
+      <div class="exp-review-header"><span class="exp-review-icon">🥾</span><span class="exp-review-title">Caldera-vandring: Oia → Fira</span><span class="exp-stars">★★★★★</span></div>
+      <div class="resto-quote">"Vandringen gav spektakulære udsigter. Skaros Rock er et absolut highlight langs stien." – TripAdvisor</div>
+      <div class="info" style="font-size:12px;margin:6px 0">📏 <strong>9 km · ~3 timer · Ingen skygge · Tag 1,5L vand pr. person</strong></div>
     </div>
   </div>
-
-  <!-- Undgå turistfælder -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-red">🚫</div>
-      <div>
-        <div class="card-title">Undgå turistfælder</div>
-        <div class="card-subtitle">Santorini-specifikke advarsler</div>
-      </div>
-    </div>
-    <div class="warning"><strong>🚫 Æsler:</strong> Undgå at ride på æsler op. Dyrevelfærd er et problem. Brug trapperne – det er bedre motionsoplevelse!</div>
-    <div class="warning"><strong>🚫 Oia solnedgang = kæmpe menneskemasse:</strong> Hvis I vil se solnedgangen i Oia (kl. ~20:30 i juni), skal I komme tidligt og finde en god plads. MEN husk skibet afgår kl. 22:00 – tidsplanen er tight. Overvej at nyde solnedgangen fra caldera-promenaden i Fira i stedet.</div>
-    <div class="warning"><strong>🚫 Restauranter i selve Oia-centrum:</strong> Overpriced. Gå 50–100 meter væk fra hovedpladsen.</div>
-    <div class="warning"><strong>🚫 MarineTraffic tip:</strong> Tjek om 3+ skibe er i havn den dag – overvej da at booke "Skip Cable Car"-tur.</div>
-    <div class="tip"><strong>💡 Backup kabel-elevator:</strong> Hvis cable car er lukket (blæst/teknisk), brug trapperne eller book alternativ bodtransport på forhånd via Viator.</div>
+    <div class="card-header"><div class="card-icon icon-red">🚫</div><div><div class="card-title">Undgå turistfælder</div></div></div>
+    <div class="warning"><strong>🚫 Æsler:</strong> Undgå at ride på æsler op. Dyrevelfærd er et problem.</div>
+    <div class="warning"><strong>🚫 Oia solnedgang kl. ~20:30:</strong> Husk skibet afgår 22:00 – tidsplanen er tight.</div>
+    <div class="warning"><strong>🚫 Restauranter i Oia-centrum:</strong> Overpriced. Gå 50–100 meter væk.</div>
   </div>
-
-  <!-- Restauranter -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">🍽️</div>
-      <div>
-        <div class="card-title">Frokostanbefalinger Santorini</div>
-        <div class="card-subtitle">I spiser aftensmad på skibet</div>
-      </div>
-    </div>
+    <div class="card-header"><div class="card-icon icon-gold">🍽️</div><div><div class="card-title">Frokostanbefalinger Santorini</div></div></div>
     <div class="resto-item">
       <div class="resto-emoji">🐟</div>
       <div>
-        <div class="resto-name">Roka Restaurant, Oia <span style="color:#f5a623">★★★★½</span> <span style="font-size:11px;color:#888">4.5/5 · 2.137 anmeldelser</span></div>
-        <div class="resto-desc">Bygning fra 1912 · Skjult i smalle bagstræder · Havudsigt · Autentisk gresk køkken</div>
-        <div class="resto-quote">"Solnedgangs-dining som er svær at slå. Cocktailene er fremragende og vinkortet imponerende. Hold dig til de lokale vine og frisk fisk – det er de bedste valg." – TripAdvisor 2024</div>
-        <div class="resto-quote">"Vi prøvede 7–8 restauranter på Santorini. Roka var en af de to bedste. Stedet er gemt i et labyrint af baggyder – men finder man det, er atmosfæren fantastisk med mix af lokale og turister." – TripAdvisor</div>
-        <div><span class="resto-price">€€€ · Reservér på forhånd · Kom tidligt</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g482941-d1127846-Reviews-Roka_Restaurant-Oia_Santorini_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
-          <a href="https://www.roka.gr" target="_blank" class="btn-link">🌐 Hjemmeside</a>
-          <a href="https://maps.google.com/?q=Roka+Restaurant+Oia+Santorini" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
+        <div class="resto-name">Roka Restaurant, Oia <span style="color:#f5a623">★★★★½</span></div>
+        <div class="resto-desc">Bygning fra 1912 · Skjult i bagstræder · Havudsigt</div>
+        <div class="resto-quote">"Vi prøvede 7–8 restauranter på Santorini. Roka var en af de to bedste." – TripAdvisor</div>
+        <div><span class="resto-price">€€€ · Reservér på forhånd</span></div>
+        <div style="margin-top:6px"><a href="https://www.roka.gr" target="_blank" class="btn-link">🌐 Hjemmeside</a><a href="https://maps.google.com/?q=Roka+Restaurant+Oia+Santorini" target="_blank" class="btn-link btn-map">📍 Maps</a></div>
       </div>
     </div>
-
-    <div class="resto-item">
-      <div class="resto-emoji">🥗</div>
-      <div>
-        <div class="resto-name">Tholoto, Kontohori <span style="color:#f5a623">★★★★★</span> <span style="font-size:11px;color:#888">#1 rated i området</span></div>
-        <div class="resto-desc">Imerovigli-nærhed · Autentisk hjemmemad · Koselig gård · Lokalt favorit</div>
-        <div class="resto-quote">"Magisk sted – levende rejseoplevelse med varm mad i en traditionel santorini-gård. Absolut det bedste vi spiste på hele øen." – TripAdvisor-gæst</div>
-        <div><span class="resto-price">€€ · Lokalt favorit · Reservér</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g482942-d2198502-Reviews-Tholoto-Fira_Santorini_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
-          <a href="https://maps.google.com/?q=Tholoto+Kontohori+Santorini" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
-      </div>
-    </div>
-
     <div class="resto-item">
       <div class="resto-emoji">🍷</div>
       <div>
         <div class="resto-name">Vinologi, Fira <span style="color:#f5a623">★★★★½</span></div>
-        <div class="resto-desc">Santorini Assyrtiko vinbar · Udsigt over caldera · Perfekt eftermiddagsoplevelse</div>
-        <div class="resto-quote">"Den ultimative stedsoplevelse: frisk, mineralsk Assyrtiko-vin fra vulkansk jord – smagsnoteret og forklaret af vinbarens ekspert. Et glas her er en del af rejsehistorien." – Vinelsker, TripAdvisor</div>
-        <div><span class="resto-price">€€€ · Vinoplevelse · Walk-in OK</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g482942-d3792625-Reviews-Vinologi-Fira_Santorini_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
-          <a href="https://maps.google.com/?q=Vinologi+Fira+Santorini" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
+        <div class="resto-desc">Santorini Assyrtiko vinbar · Udsigt over caldera</div>
+        <div class="resto-quote">"Den ultimative stedsoplevelse: frisk, mineralsk Assyrtiko-vin fra vulkansk jord." – TripAdvisor</div>
+        <div><span class="resto-price">€€€ · Walk-in OK</span></div>
+        <div style="margin-top:6px"><a href="https://maps.google.com/?q=Vinologi+Fira+Santorini" target="_blank" class="btn-link btn-map">📍 Maps</a></div>
       </div>
     </div>
-    <a href="https://maps.google.com/?q=Oia+Santorini+restaurants" target="_blank" class="btn-link btn-map">📍 Restauranter Oia</a>
   </div>
-
-  <!-- Udflugter forhåndsbooking -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-green">🎟️</div>
-      <div>
-        <div class="card-title">Book på forhånd</div>
-        <div class="card-subtitle">Hvad bør reserveres nu?</div>
-      </div>
-    </div>
-    <div class="tip"><strong>✅ Anbefalet:</strong> Hvis I er bekymrede for cable car-kø, book "Skip Cable Car"-tur via Viator. Båd direkte fra skibet til land, springer køen over.</div>
+    <div class="card-header"><div class="card-icon icon-green">🎟️</div><div><div class="card-title">Book på forhånd</div></div></div>
     <a href="https://www.viator.com/tours/Santorini/Santorini-Shore-Excursion-with-Boat-Transfer-Skip-Cable-Car/d959-63772P164" target="_blank" class="btn-link btn-book">🎟️ Viator – Skip Cable Car tur</a>
-    <a href="https://www.getyourguide.com/fira-l9797/santorini-shore-trip-to-bypass-cable-car-with-boat-transfer-t628799/" target="_blank" class="btn-link btn-book">🎟️ GetYourGuide – Boat Transfer tur</a>
-    <div class="info">Alternativt: Ingen forhåndsbooking nødvendig hvis I er tidligt i tender-køen kl. 07:00.</div>
   </div>
-
-  <!-- Wiki -->
   <div class="card">
-    <button class="collapse-btn" onclick="toggleCollapse(this)">
-      📖 Om Santorini – historisk baggrund <span class="arrow">▼</span>
-    </button>
+    <button class="collapse-btn" onclick="toggleCollapse(this)">📖 Om Santorini – historisk baggrund <span class="arrow">▼</span></button>
     <div class="collapse-content">
       <div class="wiki-box">
-        <div class="wiki-badge">🌋 Wikipedia · Dansk oversættelse</div>
-        <h4>Santorini (Θήρα / Thíra)</h4>
-        <p>Santorini er en vulkansk ø i De Kykladiske Øer i Det Ægæiske Hav, Grækenland. Øen er resterne af et enormt vulkanudbrud, der fandt sted for ca. 3.600 år siden – et af de mest voldsomme i historisk tid. Udbruddets caldera (kratersøen) udgør i dag den karakteristiske bugt, som skibet ankrer i.</p>
-        <p style="margin-top:8px">Den minoiske civilisation, som blomstrede på øen, menes at have inspireret legenden om det forsvundne Atlantis. Oia er verdens mest fotograferede solnedgang. Øen producerer den unikke Assyrtiko-drue, som trives i den vulkanske jord og producerer friske, mineralske vine.</p>
-        <a href="https://da.wikipedia.org/wiki/Santorini" target="_blank" class="btn-link">📚 Læs mere på Wikipedia</a>
+        <div class="wiki-badge">🌋 Wikipedia</div>
+        <h4>Santorini (Θήρα)</h4>
+        <p>Santorini er resterne af et enormt vulkanudbrud for ca. 3.600 år siden. Calderaen udgør den karakteristiske bugt. Den minoiske civilisation inspirerede legenden om Atlantis. Øen producerer den unikke Assyrtiko-drue fra vulkansk jord.</p>
+        <a href="https://da.wikipedia.org/wiki/Santorini" target="_blank" class="btn-link">📚 Wikipedia</a>
       </div>
     </div>
   </div>
@@ -1152,246 +511,63 @@
   <div class="port-header" style="background: linear-gradient(135deg, #1a5276, #2980b9);">
     <h2>⚔️ Rhodos</h2>
     <div style="font-size:13px;opacity:.85;margin-top:4px;">15. juni · Ankomst 09:00 · Afgang 19:00</div>
-    <div class="port-meta">
-      <span class="port-badge">🚢 Direktehavn</span>
-      <span class="port-badge">⏱️ 10 timer</span>
-      <span class="port-badge">🏰 UNESCO</span>
-    </div>
+    <div class="port-meta"><span class="port-badge">🚢 Direktehavn</span><span class="port-badge">⏱️ 10 timer</span><span class="port-badge">🏰 UNESCO</span></div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-sea">🚶</div>
-      <div>
-        <div class="card-title">Transport fra havn</div>
-        <div class="card-subtitle">Nemt! Havnen ligger direkte ved middelalderby</div>
-      </div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚶 Gangafstand: Havn → Liberty Gate</div>
-      <div class="t-val">5 min · Gratis</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚶 Havn → Mandraki Havn</div>
-      <div class="t-val">10 min gåtur</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚕 Taxi: Havn → Lindos</div>
-      <div class="t-val">45–60 min · €45–55 ét vej</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚌 Bus: Havn → Lindos (via Rimini Sq.)</div>
-      <div class="t-val">1:45 t · €3–4</div>
-    </div>
-    <div class="tip"><strong>💡 Nemt:</strong> Middelalderbyens Liberty Gate er 5 min gåtur fra skibets gangway. Ingen transport nødvendig til Old Town!</div>
-    <a href="https://maps.google.com/?q=Rhodes+Old+Town+Liberty+Gate" target="_blank" class="btn-link btn-map">📍 Liberty Gate, Rhodos</a>
-    <a href="https://maps.google.com/?q=Lindos+Rhodes" target="_blank" class="btn-link btn-map">📍 Lindos</a>
+    <div class="card-header"><div class="card-icon icon-sea">🚶</div><div><div class="card-title">Transport fra havn</div><div class="card-subtitle">Havnen ligger direkte ved middelalderby</div></div></div>
+    <div class="transport-row"><div class="t-label">🚶 Havn → Liberty Gate</div><div class="t-val">5 min · Gratis</div></div>
+    <div class="transport-row"><div class="t-label">🚕 Taxi: Havn → Lindos</div><div class="t-val">45–60 min · €45–55 ét vej</div></div>
+    <div class="transport-row"><div class="t-label">🚌 Bus: Havn → Lindos</div><div class="t-val">1:45 t · €3–4</div></div>
+    <div class="tip"><strong>💡 Nemt:</strong> Liberty Gate er 5 min gåtur fra gangway. Ingen transport nødvendig til Old Town!</div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">📅</div>
-      <div>
-        <div class="card-title">Dagsprogram – 15. juni</div>
-        <div class="card-subtitle">10 timer · 2 scenarier</div>
-      </div>
-    </div>
-
-    <div class="section-label">📍 Scenarie A: Kun Old Town (anbefalet ved ingen forhåndsbooking)</div>
+    <div class="card-header"><div class="card-icon icon-gold">📅</div><div><div class="card-title">Dagsprogram – 15. juni</div><div class="card-subtitle">10 timer · 2 scenarier</div></div></div>
+    <div class="section-label">📍 Scenarie A: Kun Old Town (anbefalet)</div>
     <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">09:00–09:15</div>
-        <div class="tl-title">Ankomst + Liberty Gate</div>
-        <div class="tl-desc">5 minutters gåtur fra skibet. I er inde i UNESCO-middelalderby!</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">09:15–11:00</div>
-        <div class="tl-title">⭐ Palace of the Grand Masters</div>
-        <div class="tl-desc">Imponerende middelalderborg. €20 pp. Fantastiske byzantinske mosaiker. Brug mindst 1 time.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">11:00–12:30</div>
-        <div class="tl-title">⭐ Street of the Knights</div>
-        <div class="tl-desc">Europas bedst bevarede middelalderlige gade. Vandre langsomt, mærk stemningen.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">12:30–14:00</div>
-        <div class="tl-title">Frokost i Old Town</div>
-        <div class="tl-desc">Find en taverna i baggaderne bag Sokratous Street. Undgå de frontest restauranter med laminertkort.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">14:00–16:30</div>
-        <div class="tl-title">Mandraki Havn + Akropolis Monte Smith</div>
-        <div class="tl-desc">Mandraki: hjortstatuer (Kolossos af Rhodos-sted). Evt. kort taxi til Monte Smith Akropolis (panoramaudsigt).</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">17:00</div>
-        <div class="tl-title">Tilbage til skibet</div>
-        <div class="tl-desc">5 min gåtur. Afgang 19:00 – ingen stress!</div>
-      </div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">09:00–11:00</div><div class="tl-title">⭐ Palace of the Grand Masters</div><div class="tl-desc">€20 pp · Fantastiske byzantinske mosaiker.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">11:00–12:30</div><div class="tl-title">⭐ Street of the Knights</div><div class="tl-desc">Europas bedst bevarede middelalderlige gade.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:30–14:00</div><div class="tl-title">Frokost i Old Town baggader</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14:00–16:30</div><div class="tl-title">Mandraki Havn + Monte Smith Akropolis</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:00</div><div class="tl-title">Tilbage til skibet</div></div>
     </div>
-
-    <div class="section-label" style="margin-top:16px">📍 Scenarie B: Lindos dagstur (book på forhånd!)</div>
+    <div class="section-label" style="margin-top:16px">📍 Scenarie B: Lindos dagstur</div>
     <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">09:00–10:00</div>
-        <div class="tl-title">Transport til Lindos</div>
-        <div class="tl-desc">Taxi (€45–55) eller Viator-tur. 50 km sydpå. Book taxi forhånd for garanteret tid.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">10:00–12:00</div>
-        <div class="tl-title">⭐ Lindos Akropolis</div>
-        <div class="tl-desc">Climb til toppen (15–20 min, stejlt men muligt). Tempel fra 4. årh. f.Kr. + middelalderfort. Udsigt til St. Paul's Bay = magisk.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">12:00–13:30</div>
-        <div class="tl-title">Frokost i Lindos + strand</div>
-        <div class="tl-desc">St. Paul's Bay: krystalklart vand, strandbar. Evt. hurtig svømmetur!</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">14:00–15:30</div>
-        <div class="tl-title">Tilbage til Rhodos Town + Old Town</div>
-        <div class="tl-desc">1 time i Palace + Street of Knights inden afgang.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot" style="background:var(--danger)"></div>
-        <div class="tl-time">⚠️ 17:30 senest</div>
-        <div class="tl-title">DEADLINE: Tilbage ved skibet</div>
-        <div class="tl-desc">Skibet afgår 19:00. Vær ombord senest 18:30.</div>
-      </div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">09:00–10:00</div><div class="tl-title">Transport til Lindos</div><div class="tl-desc">Taxi €45–55. Book forhånd!</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">10:00–13:30</div><div class="tl-title">⭐ Lindos Akropolis + St. Paul's Bay</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14:00–16:00</div><div class="tl-title">Tilbage + Old Town</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--danger)"></div><div class="tl-time">⚠️ 17:30 senest</div><div class="tl-title">DEADLINE: Tilbage ved skibet</div></div>
     </div>
-
-    <!-- Rhodes Experience Reviews -->
     <div class="exp-review-block">
-      <div class="exp-review-header">
-        <span class="exp-review-icon">🏰</span>
-        <span class="exp-review-title">Rhodos Old Town (UNESCO)</span>
-        <span class="exp-stars">★★★★★ <span class="exp-score">Bedst bevarede middelalderby i Europa</span></span>
-      </div>
-      <div class="resto-quote">"Old Town er fantastisk til at vandre rundt i på egen hånd – smalle brolagte gyder, middelalderlige mure, byzantinske kirker ombygget til moské. Det er living history." – Cruise-rejsende, TripAdvisor</div>
-      <div class="info" style="font-size:12px;margin:6px 0">💡 85% af det Old Town har at tilbyde er tilgængeligt gratis – bare ved at gå rundt. Palace og Riddernes Gade kræver billet.</div>
-      <div>
-        <a href="https://www.tripadvisor.com/Attraction_Review-g635613-d197702-Reviews-Old_Town_of_Rhodes-Rhodes_Town_Rhodes_Dodecanese_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor – Old Town</a>
-        <a href="https://da.wikipedia.org/wiki/Rhodos_by" target="_blank" class="btn-link">📚 Wikipedia</a>
-        <a href="https://maps.google.com/?q=Rhodes+Old+Town" target="_blank" class="btn-link btn-map">📍 Maps</a>
-      </div>
-    </div>
-
-    <div class="exp-review-block">
-      <div class="exp-review-header">
-        <span class="exp-review-icon">🗝️</span>
-        <span class="exp-review-title">Palace of the Grand Masters</span>
-        <span class="exp-stars">★★★★ <span class="exp-score">~€20 pp · Ca. 1 time</span></span>
-      </div>
-      <div class="resto-quote">"Et imponerende palads med storslåede byzantinske mosaiker på gulvet. Bygningen er delvist rekonstrueret, men alligevel et wow-øjeblik – særligt de enorme sale og det panoramiske tårnudsigt." – TripAdvisor-besøgende</div>
-      <div class="resto-quote">"Riddernes Gade (Street of the Knights) er Europas bedst bevarede middelalderlige gade. Gå langsomt, kig op på murene og mærk, at du er i 1300-tallet." – rejsende</div>
-      <div>
-        <a href="https://www.tripadvisor.com/Attraction_Review-g635613-d197687-Reviews-Palace_of_the_Grand_Masters-Rhodes_Town_Rhodes_Dodecanese_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor – Palace</a>
-        <a href="https://da.wikipedia.org/wiki/Stormesterens_Palads" target="_blank" class="btn-link">📚 Wikipedia</a>
-        <a href="https://maps.google.com/?q=Palace+Grand+Masters+Rhodes" target="_blank" class="btn-link btn-map">📍 Maps</a>
-      </div>
+      <div class="exp-review-header"><span class="exp-review-icon">🏰</span><span class="exp-review-title">Rhodos Old Town (UNESCO)</span><span class="exp-stars">★★★★★</span></div>
+      <div class="resto-quote">"Old Town er fantastisk til at vandre rundt i – smalle brolagte gyder, middelalderlige mure, byzantinske kirker. Det er living history." – TripAdvisor</div>
     </div>
   </div>
-
-  <!-- Undgå turistfælder -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-red">🚫</div>
-      <div>
-        <div class="card-title">Undgå turistfælder</div>
-        <div class="card-subtitle">Rhodos-specifikke advarsler</div>
-      </div>
-    </div>
-    <div class="warning"><strong>🚫 Sokratous Street restauranter:</strong> Den brede handelsgade – smukke, men overpriced. Gå i baggaderne.</div>
-    <div class="warning"><strong>🚫 Turisttog:</strong> Spild af tid og penge. Old Town er nemt at gå rundt i selv.</div>
-    <div class="warning"><strong>🚫 Lindos tidspres:</strong> Lindos er langt! Hvis I vælger scenarie B – book alt transport på forhånd. Gå IKKE og regn med at finde taxi på stedet.</div>
-    <div class="tip"><strong>💡 Bedste oplevelse:</strong> Old Town alene fylder let en dag. Rid ikke på æsler i Lindos heller.</div>
+    <div class="card-header"><div class="card-icon icon-red">🚫</div><div><div class="card-title">Undgå turistfælder</div></div></div>
+    <div class="warning"><strong>🚫 Sokratous Street restauranter:</strong> Overpriced. Gå i baggaderne.</div>
+    <div class="warning"><strong>🚫 Lindos tidspres:</strong> Book transport på forhånd. Gå IKKE og regn med taxi på stedet.</div>
   </div>
-
-  <!-- Restauranter -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">🍽️</div>
-      <div><div class="card-title">Frokostanbefalinger Rhodos</div></div>
-    </div>
-    <div class="resto-item">
-      <div class="resto-emoji">🐑</div>
-      <div>
-        <div class="resto-name">Petaladika Taverna, Old Town <span style="color:#f5a623">★★★★</span></div>
-        <div class="resto-desc">I baggaderne bag Sokratous · Klassisk gresk · Meze-buffet · Lokale kunder</div>
-        <div class="resto-quote">"Stik af fra de store turistgader og find de autentiske taverner i baggaderne. Her spiser lokalbefolkningen – og det er det bedste bevis på kvalitet." – Rejsende, TripAdvisor</div>
-        <div><span class="resto-price">€€ · Walk-in · God pris</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurants-g635613-c11-Rhodes_Town_Rhodes_Dodecanese_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor Rhodos</a>
-          <a href="https://maps.google.com/?q=taverna+Rhodes+Old+Town+backstreets" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
-      </div>
-    </div>
-
+    <div class="card-header"><div class="card-icon icon-gold">🍽️</div><div><div class="card-title">Frokostanbefalinger Rhodos</div></div></div>
     <div class="resto-item">
       <div class="resto-emoji">🦞</div>
       <div>
-        <div class="resto-name">Marco Polo Café, Old Town <span style="color:#f5a623">★★★★½</span> <span style="font-size:11px;color:#888">4.6/5 · 1.075 anmeldelser</span></div>
-        <div class="resto-desc">Smalle middelalderlige stræder · Indre gård · Romantisk atmosfære · Elegant gresk fusion</div>
-        <div class="resto-quote">"Af alle de taverner vi besøgte, var dette den bedste. Vi er fire som skiftedes til at vælge restaurant – og alle var enige om at vende tilbage til Marco Polo. Eksquisit mad, charmante personale." – TripAdvisor 2024</div>
-        <div class="resto-quote">"Restauranten er i en af de smalle stræder i Old Town – let at overse hvis man ikke leder efter Marco Polo-skiltet. Køkken er gresk, men mere elegant end en klassisk taverna." – TripAdvisor</div>
+        <div class="resto-name">Marco Polo Café, Old Town <span style="color:#f5a623">★★★★½</span></div>
+        <div class="resto-desc">Smalle middelalderlige stræder · Indre gård · Elegant gresk fusion</div>
+        <div class="resto-quote">"Af alle de taverner vi besøgte, var dette den bedste." – TripAdvisor 2024</div>
         <div><span class="resto-price">€€€ · Kun aften · Reservér</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g635613-d1062448-Reviews-Marco_Polo_Cafe-Rhodes_Town_Rhodes_Dodecanese_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
-          <a href="https://maps.google.com/?q=Marco+Polo+Cafe+Rhodes+Old+Town" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
+        <div style="margin-top:6px"><a href="https://maps.google.com/?q=Marco+Polo+Cafe+Rhodes+Old+Town" target="_blank" class="btn-link btn-map">📍 Maps</a></div>
       </div>
     </div>
-
-    <div class="resto-item">
-      <div class="resto-emoji">🏖️</div>
-      <div>
-        <div class="resto-name">Captain's House, Lindos <span style="color:#f5a623">★★★★</span> <span style="font-size:11px;color:#888">Kun ved Scenarie B</span></div>
-        <div class="resto-desc">St. Paul's Bay-udsigt · Frisk fisk · Romantisk terrasse · Lindos by</div>
-        <div class="resto-quote">"Beliggenhed direkte ud til St. Paul's Bay med udsigt til Akropolis oppe på klippen. Fisken er frisk, servicen venlig. Det perfekte frokost-stop efter bestigningen." – TripAdvisor-gæst</div>
-        <div><span class="resto-price">€€€ · Kun Lindos (scenarie B)</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurants-g635663-Lindos_Rhodes_Dodecanese_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor Lindos</a>
-          <a href="https://maps.google.com/?q=restaurant+Lindos+St+Paul+Bay" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
-      </div>
-    </div>
-    <a href="https://maps.google.com/?q=restaurants+Rhodes+Old+Town" target="_blank" class="btn-link btn-map">📍 Restauranter Old Town</a>
   </div>
-
-  <!-- Udflugter -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-green">🎟️</div>
-      <div><div class="card-title">Evt. forhåndsbooking</div></div>
-    </div>
-    <a href="https://www.viator.com/Rhodes-tours/Shore-Excursions/d14091-g12-c25" target="_blank" class="btn-link btn-book">🎟️ Viator – Lindos udflugter</a>
-    <a href="https://www.getyourguide.com/rhodes-l14091/lindos-t83218/" target="_blank" class="btn-link btn-book">🎟️ GetYourGuide – Lindos</a>
-    <div class="info">Palace of the Grand Masters billetter kan købes ved indgangen. Ingen forhåndsbooking nødvendig.</div>
-  </div>
-
-  <!-- Wiki -->
-  <div class="card">
-    <button class="collapse-btn" onclick="toggleCollapse(this)">
-      📖 Om Rhodos – historisk baggrund <span class="arrow">▼</span>
-    </button>
+    <button class="collapse-btn" onclick="toggleCollapse(this)">📖 Om Rhodos – historisk baggrund <span class="arrow">▼</span></button>
     <div class="collapse-content">
       <div class="wiki-box">
-        <div class="wiki-badge">⚔️ Wikipedia · Dansk oversættelse</div>
+        <div class="wiki-badge">⚔️ Wikipedia</div>
         <h4>Rhodos (Ρόδος)</h4>
-        <p>Rhodos er den største ø i Det Ægæiske Hav og en af de vigtigste i Middelhavet. Øen var hjemsted for Kolossen af Rhodos – en bronzestatue af Helios, solens gud – som var et af Oldtidens Syv Vidundere. Statuen stod ved havneindgangen og var ca. 33 meter høj, indtil den styrtede ned efter et jordskælv i 226 f.Kr.</p>
-        <p style="margin-top:8px">Middelalderbyens befæstede mure og Stormesterens Palads er bygget af Johanniterordenen (Ridderordenen) i 1300–1400-tallet og er et af Europas bedst bevarede eksempler på middelalderlig forsvarsarkitektur. UNESCO tildelte Old Town World Heritage Site-status i 1988. Lindos-akropolisen er endnu ældre – den stammer fra den hellenistiske periode (4. årh. f.Kr.) og er kombineret med et byzantinsk fort og middelalderlige riddertårne.</p>
-        <a href="https://da.wikipedia.org/wiki/Rhodos" target="_blank" class="btn-link">📚 Læs mere på Wikipedia</a>
+        <p>Rhodos var hjemsted for Kolossen af Rhodos – et af Oldtidens Syv Vidundere. Middelalderbyens befæstede mure er bygget af Johanniterordenen i 1300–1400-tallet og er et af Europas bedst bevarede eksempler på middelalderlig forsvarsarkitektur (UNESCO 1988).</p>
+        <a href="https://da.wikipedia.org/wiki/Rhodos" target="_blank" class="btn-link">📚 Wikipedia</a>
       </div>
     </div>
   </div>
@@ -1402,221 +578,71 @@
   <div class="port-header" style="background: linear-gradient(135deg, #6c3483, #af7ac5);">
     <h2>🏺 Kusadasi & Efesos</h2>
     <div style="font-size:13px;opacity:.85;margin-top:4px;">16. juni · Ankomst 08:00 · Afgang 20:00</div>
-    <div class="port-meta">
-      <span class="port-badge">🇹🇷 Tyrkiet</span>
-      <span class="port-badge">🚢 Direktehavn</span>
-      <span class="port-badge">⏱️ 12 timer</span>
-      <span class="port-badge">🏛️ Efesos MUST!</span>
-    </div>
+    <div class="port-meta"><span class="port-badge">🇹🇷 Tyrkiet</span><span class="port-badge">🚢 Direktehavn</span><span class="port-badge">⏱️ 12 timer</span><span class="port-badge">🏛️ Efesos MUST!</span></div>
   </div>
-
   <div class="card" style="background: linear-gradient(135deg, #fef9e7, #fdebd0);">
-    <div style="font-size: 22px; margin-bottom: 8px;">🏛️</div>
+    <div style="font-size:22px;margin-bottom:8px">🏛️</div>
     <div style="font-weight:700;font-size:16px;color:var(--sea-dark)">Efesos er ikke til at misse!</div>
-    <div style="font-size:13px;color:var(--text);margin-top:6px">En af verdens bedst bevarede antikke byer – 250.000 indbyggere på romertidens højdepunkt. Library of Celsus, 25.000-persons teatret, marmorveje. Dette er rejsens historiske højdepunkt.</div>
+    <div style="font-size:13px;color:var(--text);margin-top:6px">En af verdens bedst bevarede antikke byer – 250.000 indbyggere på romertidens højdepunkt. Library of Celsus, 25.000-persons teatret, marmorveje.</div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-sea">🚌</div>
-      <div>
-        <div class="card-title">Transport fra havn</div>
-        <div class="card-subtitle">Kusadasi havn er i centrum af byen</div>
-      </div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚶 Havn → Kusadasi bycenter</div>
-      <div class="t-val">5 min gåtur</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚕 Taxi: Havn → Efesos</div>
-      <div class="t-val">25 min · €35–40 retur</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚌 Dolmuş #5 → Selçuk → Efesos</div>
-      <div class="t-val">30–40 min · ~€1–2 pp</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">📍 Afstand havn → Efesos</div>
-      <div class="t-val">19–20 km</div>
-    </div>
-    <div class="tip"><strong>💡 Bedste løsning:</strong> Book privat dagstur med guide. Tidsstyret, historisk indsigt, og garanti for at nå skibet. Ca. €60–100 pp inkl. guide og transport.</div>
-    <div class="warning"><strong>⚠️ Efesos billetpris:</strong> ca. €40 pp. Terrace Houses (terrasse-huse med freskoer): €15 ekstra. Tag det med – det er fantastisk!</div>
-    <a href="https://maps.google.com/?q=Ephesus+ancient+city" target="_blank" class="btn-link btn-map">📍 Efesos på Maps</a>
-    <a href="https://maps.google.com/?q=Kusadasi+port" target="_blank" class="btn-link btn-map">📍 Kusadasi havn</a>
+    <div class="card-header"><div class="card-icon icon-sea">🚌</div><div><div class="card-title">Transport fra havn</div></div></div>
+    <div class="transport-row"><div class="t-label">🚕 Taxi: Havn → Efesos</div><div class="t-val">25 min · €35–40 retur</div></div>
+    <div class="transport-row"><div class="t-label">📍 Afstand havn → Efesos</div><div class="t-val">19–20 km</div></div>
+    <div class="tip"><strong>💡 Bedste løsning:</strong> Book privat dagstur med guide. Ca. €60–100 pp inkl. guide og transport.</div>
+    <div class="warning"><strong>⚠️ Efesos billetpris:</strong> ca. €40 pp. Terrace Houses: €15 ekstra – meget det værd!</div>
   </div>
-
-  <!-- Dagsprogram -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">📅</div>
-      <div>
-        <div class="card-title">Dagsprogram – 16. juni</div>
-        <div class="card-subtitle">12 timer · Historisk TOPDAG</div>
-      </div>
-    </div>
-    <div class="warning"><strong>⚠️ Sommer + middagssol:</strong> Efesos er delvist ubeskyttet. Vær der om morgenen. Medbring: vand, solhat, solcreme, komfortsko. Temperatur i juni: 32–38°C!</div>
+    <div class="card-header"><div class="card-icon icon-gold">📅</div><div><div class="card-title">Dagsprogram – 16. juni</div><div class="card-subtitle">12 timer · Historisk TOPDAG</div></div></div>
+    <div class="warning"><strong>⚠️ Sommer + middagssol:</strong> 32–38°C! Medbring: vand, solhat, solcreme, komfortsko.</div>
     <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">08:00–08:30</div>
-        <div class="tl-title">Ankomst + tidlig afgang mod Efesos</div>
-        <div class="tl-desc">Mød guide/taxi direkte ved gangway. De fleste guidede ture starter 08:30.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">09:00–12:30</div>
-        <div class="tl-title">⭐⭐ Efesos Antikke By</div>
-        <div class="tl-desc">Library of Celsus · Curetes Street · Det store teater (klatring) · Agora · Brothel ruins. Gå oppefra ned (top gate → lower gate).</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">09:30–11:00 (inde i Efesos)</div>
-        <div class="tl-title">⭐ Terrace Houses (Terrasse-husene)</div>
-        <div class="tl-desc">+€15 pp – MEGET det værd! Romertidens luksusvilla-freskoer, nærmest intakt. Luftkonditioneret, ingen kø.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">12:30–13:30</div>
-        <div class="tl-title">Evt.: Jomfru Marias Hus</div>
-        <div class="tl-desc">Aut. pilgrimssted, 9 km fra Efesos. Roligt, smukt, historisk. Inkluderes i mange ture.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">13:30–15:00</div>
-        <div class="tl-title">Frokost i Selçuk eller Kusadasi</div>
-        <div class="tl-desc">Selçuk er den lille by nær Efesos – autentisk tyrkisk mad. Mezes, kebab, ayran.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">15:00–17:30</div>
-        <div class="tl-title">Kusadasi: Bazaar + Pigeon Island</div>
-        <div class="tl-desc">Grand Bazaar (forhandl!), Karavansarai fort, gåtur til Pigeon Island (Güvercin Adası) med slot.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">17:30–19:00</div>
-        <div class="tl-title">Aftenscafé + hjemvej</div>
-        <div class="tl-desc">Tyrkisk te (çay) ved havnefronten. Frisk luft inden afgang.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot" style="background:var(--danger)"></div>
-        <div class="tl-time">⚠️ 19:00</div>
-        <div class="tl-title">DEADLINE: Ombord!</div>
-        <div class="tl-desc">Skibet afgår 20:00. Vær ombord senest 19:30.</div>
-      </div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">08:00–08:30</div><div class="tl-title">Ankomst + afgang mod Efesos</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">09:00–12:30</div><div class="tl-title">⭐⭐ Efesos Antikke By</div><div class="tl-desc">Library of Celsus · Curetes Street · Det store teater · Gå oppefra ned.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">09:30–11:00</div><div class="tl-title">⭐ Terrace Houses (+€15)</div><div class="tl-desc">Romertids-villa-freskoer nærmest intakt. Luftkonditioneret. MEGET det værd!</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13:30–15:00</div><div class="tl-title">Frokost i Selçuk</div><div class="tl-desc">Autentisk tyrkisk mad. Mezes, kebab, ayran.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:00–17:30</div><div class="tl-title">Kusadasi: Bazaar + Pigeon Island</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--danger)"></div><div class="tl-time">⚠️ 19:00</div><div class="tl-title">DEADLINE: Ombord!</div><div class="tl-desc">Skibet afgår 20:00.</div></div>
     </div>
-
-    <!-- Ephesus Experience Reviews -->
     <div class="exp-review-block">
-      <div class="exp-review-header">
-        <span class="exp-review-icon">🏛️</span>
-        <span class="exp-review-title">Efesos – Antikkens supervile</span>
-        <span class="exp-stars">★★★★★ <span class="exp-score">UNESCO · Rejsens historiske topdag</span></span>
-      </div>
-      <div class="resto-quote">"Dette er et MUST for enhver der interesserer sig for oldtidens verden. At stå der og forestille sig, hvad det var som dagligliv for 2.000 år siden … det er UTROLIGT! Library of Celsus, teatret, badene – det hele er der." – TripAdvisor</div>
-      <div class="resto-quote">"En marmor-supervile fra romertidens toppunkt – bemærkelsesværdigt velbevarede og under stadig udgravning. Tillad 3–4 timer som minimum for at opleve to agoraer, et hospital, et gladiator-gymnasium, et teater og biblioteket." – TripAdvisor</div>
-      <div class="resto-quote">"At gå på de samme marmorsten som folk gik på for 2.000 år siden ... det er en utrolig fornemmelse. Vi følte os levende – selv om vi kun passerer igennem livet ... Disse sten i Efesos vil stå der lang tid endnu." – TripAdvisor-gæst</div>
-      <div class="info" style="font-size:12px;margin:6px 0">🎟️ <strong>Billet: ~€40 pp · Terrace Houses: +€15 · Gå oppefra ned (top gate → lower gate)</strong></div>
-      <div>
-        <a href="https://www.tripadvisor.com/Attraction_Review-g293976-d548950-Reviews-Ancient_City_of_Ephesus-Selcuk_Izmir_Province_Turkish_Aegean_Coast.html" target="_blank" class="btn-link">🟢 TripAdvisor – Efesos</a>
-        <a href="https://da.wikipedia.org/wiki/Efesos" target="_blank" class="btn-link">📚 Wikipedia</a>
-        <a href="https://maps.google.com/?q=Ancient+City+Ephesus" target="_blank" class="btn-link btn-map">📍 Maps</a>
-      </div>
-    </div>
-
-    <div class="exp-review-block">
-      <div class="exp-review-header">
-        <span class="exp-review-icon">🖼️</span>
-        <span class="exp-review-title">Terrace Houses (Terrasse-husene)</span>
-        <span class="exp-stars">★★★★★ <span class="exp-score">+€15 · Absolut det værd</span></span>
-      </div>
-      <div class="resto-quote">"Terrasse-husene er et skjult highlight inde i Efesos. Romertidsvilla-freskoer nærmest intakt under et overdækket beskyttelsesrum – luftkonditioneret og uden kø. Springes over af mange grupper, men er noget af det bedste på hele stedet." – rejseguide-anbefaling</div>
-      <div>
-        <a href="https://www.tripadvisor.com/Attraction_Review-g293976-d6541090-Reviews-Terrace_Houses-Selcuk_Izmir_Province_Turkish_Aegean_Coast.html" target="_blank" class="btn-link">🟢 TripAdvisor – Terrace Houses</a>
-        <a href="https://maps.google.com/?q=Terrace+Houses+Ephesus" target="_blank" class="btn-link btn-map">📍 Maps</a>
-      </div>
+      <div class="exp-review-header"><span class="exp-review-icon">🏛️</span><span class="exp-review-title">Efesos – Antikkens supervile</span><span class="exp-stars">★★★★★ <span class="exp-score">UNESCO</span></span></div>
+      <div class="resto-quote">"Dette er et MUST for enhver der interesserer sig for oldtidens verden. Library of Celsus, teatret, badene – det hele er der." – TripAdvisor</div>
+      <div class="resto-quote">"At gå på de samme marmorsten som folk gik på for 2.000 år siden ... det er en utrolig fornemmelse." – TripAdvisor</div>
+      <div style="margin-top:6px"><a href="https://maps.google.com/?q=Ancient+City+Ephesus" target="_blank" class="btn-link btn-map">📍 Maps</a><a href="https://da.wikipedia.org/wiki/Efesos" target="_blank" class="btn-link">📚 Wikipedia</a></div>
     </div>
   </div>
-
-  <!-- Turistfælder -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-red">🚫</div>
-      <div>
-        <div class="card-title">Undgå turistfælder</div>
-        <div class="card-subtitle">Kusadasi-specifikke advarsler</div>
-      </div>
-    </div>
-    <div class="warning"><strong>🚫 Lædervarer/tæpper-stop:</strong> Mange ture inkluderer obligatoriske stop hos tæpper/leæder-forhandlere. Vælg ture der IKKE har det. Tidsrøveri.</div>
-    <div class="warning"><strong>🚫 Taxipriser:</strong> Aftal ALTID pris FØR i sætter jer ind. Ingen taksameter-garanti.</div>
-    <div class="warning"><strong>🚫 Bazaar priser:</strong> Listepris er 3–4x salgspris. Forventes at forhandle (mindst 50% rabat). Hyggeligt!)</div>
-    <div class="tip"><strong>💡 Valuta:</strong> Tyrkiske lira – men € accepteres bredt. Brug TL for bedre priser i restauranter.</div>
-    <div class="tip"><strong>💡 Rick Steves gratis lydrundtur:</strong> Download inden afrejse til Efesos – gratis og fremragende.</div>
+    <div class="card-header"><div class="card-icon icon-red">🚫</div><div><div class="card-title">Undgå turistfælder</div></div></div>
+    <div class="warning"><strong>🚫 Lædervarer/tæpper-stop:</strong> Vælg ture der IKKE inkluderer obligatoriske butiksstop.</div>
+    <div class="warning"><strong>🚫 Taxipriser:</strong> Aftal ALTID pris FØR i sætter jer ind.</div>
+    <div class="tip"><strong>💡 Valuta:</strong> Tyrkiske lira – men € accepteres bredt.</div>
   </div>
-
-  <!-- Restauranter -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">🍽️</div>
-      <div><div class="card-title">Frokostanbefalinger</div></div>
-    </div>
-    <div class="resto-item">
-      <div class="resto-emoji">🥙</div>
-      <div>
-        <div class="resto-name">Ejder Restaurant, Selçuk <span style="color:#f5a623">★★★★½</span></div>
-        <div class="resto-desc">Nær Efesos · Autentisk tyrkisk · Lokalt favorit · Meze + lamb · Ingen turister</div>
-        <div class="resto-quote">"En af de bedste steder til autentisk tyrkisk mad i nærheden af Efesos. Lokalbefolkningen spiser her – og det er det bedste tegn. Prøv de tyrkiske mezes og lammekebab." – Rejsende, Google</div>
-        <div><span class="resto-price">€€ · Selçuk by · Meget god pris</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurants-g297971-Selcuk_Izmir_Province_Turkish_Aegean_Coast.html" target="_blank" class="btn-link">🟢 TripAdvisor Selçuk</a>
-          <a href="https://maps.google.com/?q=Ejder+Restaurant+Selcuk+Turkey" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
-      </div>
-    </div>
-
+    <div class="card-header"><div class="card-icon icon-gold">🍽️</div><div><div class="card-title">Frokostanbefalinger</div></div></div>
     <div class="resto-item">
       <div class="resto-emoji">🐠</div>
       <div>
-        <div class="resto-name">Kazim Usta, Kusadasi <span style="color:#f5a623">★★★★</span> <span style="font-size:11px;color:#888">4.0/5 · 314 anmeldelser</span></div>
-        <div class="resto-desc">Seafood-institution ved havnefronten · Ægæerhavsudsigt · Siden 1950'erne · Tæt på krydstogtterminalen</div>
-        <div class="resto-quote">"Vidunderlig frokost efter Efesos-besøget: friteret calamari, frisk hel havbras og kæmpestore rejer – alle grillet til perfektion. God lokal hvidvin. Stedet var fyldt med lokale." – TripAdvisor 2024</div>
-        <div class="resto-quote">"Frisk, sprød hel havbras med perfekt krydret kød – præcis det jeg søgte. Mezze-forretter var lækre og varierede. Udsigt ud over bugten. Vil anbefales til alle." – TripAdvisor, sep 2024</div>
-        <div class="warning" style="margin:6px 0"><strong>⚠️ OBS:</strong> Tjek priser FØR bestilling. Få gæster har oplevet uklare regninger. Bed om en prisoverslag på fisken – den vejes og prissættes pr. kilo.</div>
-        <div><span class="resto-price">€€€ · Reservér eller kom tidligt</span></div>
-        <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g297972-d1107269-Reviews-Kazim_Usta_Restaurant-Kusadasi_Turkish_Aegean_Coast.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
-          <a href="https://maps.google.com/?q=Kazim+Usta+Restaurant+Kusadasi" target="_blank" class="btn-link btn-map">📍 Maps</a>
-        </div>
+        <div class="resto-name">Kazim Usta, Kusadasi <span style="color:#f5a623">★★★★</span></div>
+        <div class="resto-desc">Seafood-institution ved havnefronten · Siden 1950'erne</div>
+        <div class="resto-quote">"Friteret calamari, frisk hel havbras og kæmpestore rejer – alle grillet til perfektion." – TripAdvisor 2024</div>
+        <div class="warning" style="margin:6px 0"><strong>⚠️ OBS:</strong> Bed om prisoverslag på fisken – den vejes og prissættes pr. kilo.</div>
+        <div><span class="resto-price">€€€</span></div>
+        <div style="margin-top:6px"><a href="https://maps.google.com/?q=Kazim+Usta+Restaurant+Kusadasi" target="_blank" class="btn-link btn-map">📍 Maps</a></div>
       </div>
     </div>
-    <a href="https://maps.google.com/?q=restaurants+Selcuk+Turkey" target="_blank" class="btn-link btn-map">📍 Restauranter Selçuk</a>
   </div>
-
-  <!-- Forhåndsbooking -->
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-green">🎟️</div>
-      <div><div class="card-title">Book på forhånd – anbefalet!</div></div>
-    </div>
-    <div class="info">Privat guidet tur til Efesos STÆRKT anbefalet. Guide giver kontekst og sikrer tidsplan.</div>
+    <div class="card-header"><div class="card-icon icon-green">🎟️</div><div><div class="card-title">Book på forhånd – anbefalet!</div></div></div>
     <a href="https://www.viator.com/Kusadasi-tours/Shore-Excursions/d4440-g12-c25" target="_blank" class="btn-link btn-book">🎟️ Viator – Efesos udflugter</a>
     <a href="https://www.getyourguide.com/kusadasi-l13594/ephesus-t36803/" target="_blank" class="btn-link btn-book">🎟️ GetYourGuide – Efesos</a>
-    <a href="https://www.ephesustravelguide.com" target="_blank" class="btn-link">🏛️ Efesos Travel Guide</a>
   </div>
-
-  <!-- Wiki -->
   <div class="card">
-    <button class="collapse-btn" onclick="toggleCollapse(this)">
-      📖 Om Efesos – historisk baggrund <span class="arrow">▼</span>
-    </button>
+    <button class="collapse-btn" onclick="toggleCollapse(this)">📖 Om Efesos – historisk baggrund <span class="arrow">▼</span></button>
     <div class="collapse-content">
       <div class="wiki-box">
-        <div class="wiki-badge">🏺 Wikipedia · Dansk oversættelse</div>
+        <div class="wiki-badge">🏺 Wikipedia</div>
         <h4>Efesos (Ἔφεσος)</h4>
-        <p>Efesos var en af de vigtigste byer i den antikke verden og Romerrigets næststørste by efter Rom, med anslået 250.000 indbyggere. Byen lå ved Middelhavskysten og var et vigtigt handelscentrum. Artemis-templet i Efesos var et af Oldtidens Syv Vidundere og fire gange større end Parthenon i Athen.</p>
-        <p style="margin-top:8px">Apostlen Paulus boede her i to år og sendte sine berømte breve (Efeserbrevet) fra byen. Den Hellige Johannes boede her mod slutningen af sit liv, og Jomfru Maria menes af mange at have tilbragt sine sidste år i en hytte i bjergene over Efesos. Library of Celsus, opbygget i år 117 e.Kr., kunne rumme 12.000 bogruller og var det tredjestørste bibliotek i den antikke verden.</p>
-        <a href="https://da.wikipedia.org/wiki/Efesos" target="_blank" class="btn-link">📚 Læs mere på Wikipedia</a>
+        <p>Efesos var Romerrigets næststørste by med 250.000 indbyggere. Artemis-templet var et af Oldtidens Syv Vidundere. Apostlen Paulus boede her i to år. Library of Celsus (år 117 e.Kr.) rummede 12.000 bogruller.</p>
+        <a href="https://da.wikipedia.org/wiki/Efesos" target="_blank" class="btn-link">📚 Wikipedia</a>
       </div>
     </div>
   </div>
@@ -1627,42 +653,108 @@
   <div class="port-header" style="background: linear-gradient(135deg, #1a7a8a, #0f9ab5);">
     <h2>💨 Mykonos</h2>
     <div style="font-size:13px;opacity:.85;margin-top:4px;">17. juni · Ankomst 07:00 · Afgang 18:00</div>
+    <div class="port-meta"><span class="port-badge">🛥️ Tender (T)</span><span class="port-badge">⏱️ 11 timer</span><span class="port-badge">💨 Vindmøller</span></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-icon icon-sea">🚌</div><div><div class="card-title">Transport fra havn</div><div class="card-subtitle">New Port (Tourlos) → Mykonos Town (Chora)</div></div></div>
+    <div class="transport-row"><div class="t-label">🚤 SeaBus: Tourlos → Old Port</div><div class="t-val">8 min · €2 pp</div></div>
+    <div class="transport-row"><div class="t-label">🚶 Gåtur langs kysten</div><div class="t-val">20–30 min · Flat</div></div>
+    <div class="transport-row"><div class="t-label">🚕 Taxi: Tourlos → Chora</div><div class="t-val">5 min · €10–15</div></div>
+    <div class="tip"><strong>💡 SeaBus anbefalet:</strong> Hurtig, billig sejltur ind til Chora.</div>
+    <div class="warning"><strong>⚠️ Taxi problem:</strong> Mykonos-taxier er notorisk svære at finde i højsæson.</div>
+    <a href="https://maps.google.com/?q=Mykonos+Town+Chora" target="_blank" class="btn-link btn-map">📍 Chora</a>
+    <a href="https://maps.google.com/?q=Kato+Mili+Windmills+Mykonos" target="_blank" class="btn-link btn-map">📍 Vindmøllerne</a>
+    <a href="https://maps.google.com/?q=Little+Venice+Mykonos" target="_blank" class="btn-link btn-map">📍 Little Venice</a>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-icon icon-gold">📅</div><div><div class="card-title">Dagsprogram – 17. juni</div></div></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">07:00–07:30</div><div class="tl-title">Tag første SeaBus ind</div><div class="tl-desc">Morgenstemning i Chora = magisk. Næsten tomme gader.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">07:30–09:30</div><div class="tl-title">⭐ Chora gåtur – labyrinten</div><div class="tl-desc">Paraportiani-kirken. Meld jer bevidst fortabt i smalle stræder!</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">09:30–10:30</div><div class="tl-title">⭐ Vindmøllerne (Kato Mili)</div><div class="tl-desc">7 vindmøller fra 1500-tallet. Tidlig ankomst = ingen menneskemasser.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">10:30–12:00</div><div class="tl-title">⭐ Little Venice + kaffe</div><div class="tl-desc">Farverige bygninger direkte ud over havet. €6–8 for en kaffe – berettiget!</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:00–14:00</div><div class="tl-title">Frokost + Matoyianni Street</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14:00–16:30</div><div class="tl-title">Valgfri: Strand (Platis Gialos) ELLER Delos-tur</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--danger)"></div><div class="tl-time">⚠️ 17:00</div><div class="tl-title">Tilbage til skibet – afgang 18:00</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-icon icon-red">🚫</div><div><div class="card-title">Undgå turistfælder</div></div></div>
+    <div class="warning"><strong>🚫 Priser:</strong> Mykonos er dyrt. En øl koster €8–12. Budgettér derefter.</div>
+    <div class="tip"><strong>💡 Hemmelighed:</strong> Gå I MODSAT retning af turiststrømmen. Baggaderne er tusind gange mere autentiske.</div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-icon icon-gold">🍽️</div><div><div class="card-title">Frokostanbefalinger Mykonos</div></div></div>
+    <div class="resto-item">
+      <div class="resto-emoji">🐟</div>
+      <div>
+        <div class="resto-name">Kounelas Fish Taverna <span style="color:#f5a623">★★★★</span></div>
+        <div class="resto-desc">Nær Old Port · Frisk fisk · Siden 1970 · Lokalt favorit</div>
+        <div class="resto-quote">"Personalet tog os ind for at se dagens fangst, så vi selv kunne vælge – vi valgte sværdfisk og rød snapper. Fremragende!" – TripAdvisor</div>
+        <div><span class="resto-price">€€€ · Kom tidligt</span></div>
+        <div style="margin-top:6px"><a href="https://maps.google.com/?q=Kounelas+Fish+Taverna+Mykonos" target="_blank" class="btn-link btn-map">📍 Maps</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <button class="collapse-btn" onclick="toggleCollapse(this)">📖 Om Mykonos – historisk baggrund <span class="arrow">▼</span></button>
+    <div class="collapse-content">
+      <div class="wiki-box">
+        <div class="wiki-badge">💨 Wikipedia</div>
+        <h4>Mykonos (Μύκονος)</h4>
+        <p>Mykonos er kendetegnet ved hvidkalkede bygninger, smalle gyder og ikoniske vindmøller fra 1500-tallet. Den nærliggende ø Delos var oldtidens vigtigste religiøse center – ifølge mytologien fødestedet for Apollo og Artemis.</p>
+        <a href="https://da.wikipedia.org/wiki/Mykonos" target="_blank" class="btn-link">📚 Wikipedia</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ==================== THESSALONIKI ==================== -->
+<div id="page-thessaloniki" class="page">
+  <div class="port-header" style="background: linear-gradient(135deg, #1a3a5c, #2e6da4);">
+    <h2>🏛️ Thessaloniki</h2>
+    <div style="font-size:13px;opacity:.85;margin-top:4px;">18. juni · Ankomst 09:00 · Afgang 21:00</div>
     <div class="port-meta">
-      <span class="port-badge">🛥️ Tender/Kaj</span>
-      <span class="port-badge">⏱️ 11 timer</span>
-      <span class="port-badge">💨 Vindmøller</span>
+      <span class="port-badge">🚢 Direktehavn (D)</span>
+      <span class="port-badge">⏱️ 12 timer</span>
+      <span class="port-badge">🇬🇷 Makedonien</span>
     </div>
   </div>
 
+  <div class="card" style="background: linear-gradient(135deg, #eaf4fb, #d6eaf8);">
+    <div style="font-size: 22px; margin-bottom: 8px;">🏛️</div>
+    <div style="font-weight:700;font-size:16px;color:var(--sea-dark)">Grækenlands anden by – undervurderet perle!</div>
+    <div style="font-size:13px;color:var(--text);margin-top:6px">Thessaloniki er Nordgrækenlands kulturelle hjerte med byzantinske kirker, en levende madscene og en af Europas bedste strandboulevardpromenader. Ingen massekø-turisme – dette er det "rigtige" Grækenland.</div>
+  </div>
+
+  <!-- Transport -->
   <div class="card">
     <div class="card-header">
-      <div class="card-icon icon-sea">🚌</div>
+      <div class="card-icon icon-sea">🚶</div>
       <div>
         <div class="card-title">Transport fra havn</div>
-        <div class="card-subtitle">New Port (Tourlos) → Mykonos Town (Chora)</div>
+        <div class="card-subtitle">Thessaloniki havn er centralt beliggende</div>
       </div>
     </div>
     <div class="transport-row">
-      <div class="t-label">🚤 SeaBus (vandbuss): Tourlos → Old Port</div>
-      <div class="t-val">8 min · €2 pp</div>
+      <div class="t-label">🚶 Havn → Aristotelous Square</div>
+      <div class="t-val">10–15 min gåtur</div>
     </div>
     <div class="transport-row">
-      <div class="t-label">🚶 Gåtur langs kysten</div>
-      <div class="t-val">20–30 min · Flat, flot</div>
+      <div class="t-label">🚶 Havn → White Tower</div>
+      <div class="t-val">20 min gåtur langs promenaden</div>
     </div>
     <div class="transport-row">
-      <div class="t-label">🚕 Taxi: Tourlos → Chora</div>
-      <div class="t-val">5 min · €10–15</div>
+      <div class="t-label">🚕 Taxi: Havn → Ano Poli (Upper Town)</div>
+      <div class="t-val">10 min · €8–12</div>
     </div>
     <div class="transport-row">
-      <div class="t-label">🚌 Bus: Chora → Paradise Beach</div>
-      <div class="t-val">15 min · €2</div>
+      <div class="t-label">🚌 Bus: Central → Ano Poli</div>
+      <div class="t-val">20 min · €1,20</div>
     </div>
-    <div class="tip"><strong>💡 SeaBus anbefalet:</strong> Hurtig, billig, hyggelig sejltur ind til Chora. Starter løbende fra piren.</div>
-    <div class="warning"><strong>⚠️ Taxi problem:</strong> Mykonos-taxier er notorisk svære at finde i højsæson. Regn ikke med at fange en på gaden. Brug SeaBus + gå.</div>
-    <a href="https://maps.google.com/?q=Mykonos+Town+Chora" target="_blank" class="btn-link btn-map">📍 Mykonos Town (Chora)</a>
-    <a href="https://maps.google.com/?q=Kato+Mili+Windmills+Mykonos" target="_blank" class="btn-link btn-map">📍 Vindmøllerne</a>
-    <a href="https://maps.google.com/?q=Little+Venice+Mykonos" target="_blank" class="btn-link btn-map">📍 Little Venice</a>
+    <div class="tip"><strong>💡 Nemt:</strong> Thessaloniki er meget gåvenlig. Havnen, Aristotelous Square, White Tower og Modiano Marked er alle inden for 20 minutters gang fra hinanden.</div>
+    <a href="https://maps.google.com/?q=White+Tower+Thessaloniki" target="_blank" class="btn-link btn-map">📍 White Tower</a>
+    <a href="https://maps.google.com/?q=Aristotelous+Square+Thessaloniki" target="_blank" class="btn-link btn-map">📍 Aristotelous Square</a>
+    <a href="https://maps.google.com/?q=Ano+Poli+Thessaloniki" target="_blank" class="btn-link btn-map">📍 Ano Poli (Upper Town)</a>
   </div>
 
   <!-- Dagsprogram -->
@@ -1670,82 +762,73 @@
     <div class="card-header">
       <div class="card-icon icon-gold">📅</div>
       <div>
-        <div class="card-title">Dagsprogram – 17. juni</div>
-        <div class="card-subtitle">11 timer · Sidst på turen – nyd det!</div>
+        <div class="card-title">Dagsprogram – 18. juni</div>
+        <div class="card-subtitle">12 timer · By og byzantinsk kultur</div>
       </div>
     </div>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-time">07:00–07:30</div>
-        <div class="tl-title">Tag første SeaBus ind</div>
-        <div class="tl-desc">Morgenstemning i Chora = magisk. Næsten tomme gader og gyldent lys.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">07:30–09:30</div>
-        <div class="tl-title">⭐ Chora gåtur – labyrinten</div>
-        <div class="tl-desc">Vandre de hvidkalkede gyder. Paraportiani-kirken (5 sammensatte kapeller). Meld jer bevidst fortabt i smalle stræder!</div>
+        <div class="tl-time">09:00–09:20</div>
+        <div class="tl-title">Ankomst + promenadegåtur</div>
+        <div class="tl-desc">Gå langs havnepromenaden (Nikis Avenue) mod White Tower. Udsigt til Thermaic Gulf. Strålende morgenstart.</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-time">09:30–10:30</div>
-        <div class="tl-title">⭐ Vindmøllerne (Kato Mili)</div>
-        <div class="tl-desc">5–10 min gåtur fra Chora. Tidlig ankomst = ingen menneskemasser foran linsen. 7 vindmøller fra 1500-tallet. Panorama udsigt.</div>
+        <div class="tl-title">⭐ White Tower (Lefkos Pyrgos)</div>
+        <div class="tl-desc">Byens symbol. 6 etager med byens historie. Udsigt fra toppen = panorama over Thermaic Gulf. €4 pp.</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-time">10:30–12:00</div>
-        <div class="tl-title">⭐ Little Venice + kaffe</div>
-        <div class="tl-desc">Farverige bygninger direkte ud over havet. Sæt jer på en café med udsigt. Dyrt (€6–8 en kaffe) men berettiget!</div>
+        <div class="tl-title">⭐ Aristotelous Square + Modiano Marked</div>
+        <div class="tl-desc">Byens smukkeste plads. Modiano = overdækket marked med frisk fisk, krydderier, lokale delikatesser. Smag på alt!</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-time">12:00–14:00</div>
-        <div class="tl-title">Frokost + Matoyianni Street shopping</div>
-        <div class="tl-desc">Frokost i en bagside-taverna. Matoyianni = shopping med lokale butikker, gallerier, håndværk.</div>
+        <div class="tl-time">12:00–13:30</div>
+        <div class="tl-title">⭐ Frokost – Thessalonikis madscene</div>
+        <div class="tl-desc">Thessaloniki er Grækenlands ubestridte madhovedstad. Bougatsa, trigona, gyros med frisk pitabrød. Se restaurantlisten.</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-time">14:00–16:30</div>
-        <div class="tl-title">Valgfri: Strand ELLER Delos-tur</div>
-        <div class="tl-desc"><strong>Strand:</strong> Bus til Platis Gialos (15 min, €2). Familievenlig strand, klart vand.<br><strong>Delos:</strong> 30 min færge fra Old Port. UNESCO-ø med antikke templer. Book på forhånd.</div>
+        <div class="tl-time">13:30–15:30</div>
+        <div class="tl-title">⭐ Byzantinske kirker-rute</div>
+        <div class="tl-desc">Hagia Sophia Thessaloniki (774 e.Kr.) · Rotunda (Romertidens kejserlige mausoleum, nu kirke) · Arch of Galerius. UNESCO World Heritage sites.</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-time">16:30</div>
-        <div class="tl-title">Tilbage til skibet</div>
-        <div class="tl-desc">SeaBus retur. Afgang 18:00 – vær ombord senest 17:30.</div>
+        <div class="tl-time">15:30–17:30</div>
+        <div class="tl-title">Ano Poli – den gamle bydel</div>
+        <div class="tl-desc">Taxi op (€8–10). Byzantinske mure, ottomannske huse, stille gyder, fantastisk panoramaudsigt over hele byen og bugten. Byens bedste udsigt.</div>
       </div>
-    </div>
-
-    <!-- Mykonos Experience Reviews -->
-    <div class="exp-review-block">
-      <div class="exp-review-header">
-        <span class="exp-review-icon">💨</span>
-        <span class="exp-review-title">Mykonos Town (Chora) + Vindmøllerne</span>
-        <span class="exp-stars">★★★★★ <span class="exp-score">Ikonisk kykladisk labyrint</span></span>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">17:30–19:30</div>
+        <div class="tl-title">Ladadika kvarteret + aftenstemning</div>
+        <div class="tl-desc">Historisk havnedistrikt med restauranter og cafeer. Perfekt for en sen eftermiddagsdrik inden afgang.</div>
       </div>
-      <div class="resto-quote">"Choras hvide gyder er en drøm at vandre rundt i tidligt om morgenen – næsten tomt, gyldent lys, hvide mure og blå døre overalt. Find jer selv bevidst fortabt i baggaderne. Det er Mykonos på sit bedste." – rejsende, TripAdvisor</div>
-      <div class="resto-quote">"Vindmøllerne fra 1500-tallet er ikke bare et foto-motiv – de fortæller historien om en ø der levede af vinden. Kom tidligt om morgenen for rene billeder uden menneskemasser foran." – TripAdvisor</div>
-      <div>
-        <a href="https://www.tripadvisor.com/Attraction_Review-g662620-d197560-Reviews-Mykonos_Town_Chora-Mykonos_Town_Mykonos_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor – Chora</a>
-        <a href="https://www.tripadvisor.com/Attraction_Review-g662620-d197561-Reviews-Windmills_of_Mykonos-Mykonos_Town_Mykonos_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 Vindmøllerne</a>
-        <a href="https://da.wikipedia.org/wiki/Mykonos" target="_blank" class="btn-link">📚 Wikipedia</a>
-        <a href="https://maps.google.com/?q=Kato+Mili+Windmills+Mykonos" target="_blank" class="btn-link btn-map">📍 Maps</a>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--danger)"></div>
+        <div class="tl-time">⚠️ 20:00</div>
+        <div class="tl-title">DEADLINE: Tilbage ved skibet</div>
+        <div class="tl-desc">Skibet afgår 21:00. Vær ombord senest 20:30.</div>
       </div>
     </div>
 
     <div class="exp-review-block">
       <div class="exp-review-header">
-        <span class="exp-review-icon">🌊</span>
-        <span class="exp-review-title">Little Venice</span>
-        <span class="exp-stars">★★★★★ <span class="exp-score">Mest romantiske hjørne af Mykonos</span></span>
+        <span class="exp-review-icon">🏛️</span>
+        <span class="exp-review-title">Thessaloniki – Byzantinsk kulturperle</span>
+        <span class="exp-stars">★★★★★ <span class="exp-score">15 UNESCO-monumenter</span></span>
       </div>
-      <div class="resto-quote">"Farverige huse der hænger direkte ud over det turkisblå hav. En kaffe på en af de smalle balkonterrasser mens bølgerne bryder under jer er en oplevelse man husker. Dyrt – men det er prisen for en af verdens smukkeste udsigter." – TripAdvisor-par</div>
+      <div class="resto-quote">"Thessaloniki overraskede os totalt. Ingen masseturisme, ægte athensk stemning, fantastisk mad og kirker der er ældre end nogen vesteuropæisk katedral. Giv den en chance." – TripAdvisor</div>
+      <div class="resto-quote">"White Tower er en fantastisk start. Men det er Ano Poli og de byzantinske kirker som virkelig adskiller Thessaloniki fra alle andre græske byer – en levende by med 2.300 år af lag." – Kulturrejsende</div>
       <div>
-        <a href="https://www.tripadvisor.com/Attraction_Review-g662620-d12905526-Reviews-Little_Venice_Mykonos-Mykonos_Town_Mykonos_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor – Little Venice</a>
-        <a href="https://maps.google.com/?q=Little+Venice+Mykonos" target="_blank" class="btn-link btn-map">📍 Maps</a>
+        <a href="https://www.tripadvisor.com/Tourism-g189492-Thessaloniki_Thessaloniki_Region_Central_Macedonia-Vacations.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
+        <a href="https://da.wikipedia.org/wiki/Thessaloniki" target="_blank" class="btn-link">📚 Wikipedia</a>
+        <a href="https://maps.google.com/?q=Thessaloniki+Greece" target="_blank" class="btn-link btn-map">📍 Maps</a>
       </div>
     </div>
   </div>
@@ -1755,96 +838,112 @@
     <div class="card-header">
       <div class="card-icon icon-red">🚫</div>
       <div>
-        <div class="card-title">Undgå turistfælder</div>
-        <div class="card-subtitle">Mykonos-specifikke advarsler</div>
+        <div class="card-title">Tips & advarsler</div>
+        <div class="card-subtitle">Thessaloniki-specifikke råd</div>
       </div>
     </div>
-    <div class="warning"><strong>🚫 Matoyianni Street priser:</strong> Mykonos er dyrt. En øl koster €8–12, kaffe €6–8. Budgettér derefter – men det er prisen for atmosfæren.</div>
-    <div class="warning"><strong>🚫 Paradise Beach clubs:</strong> Sjovt men dyrt (€30–60 for liggestole + musik til 120 db). Vælg Platis Gialos i stedet for mere ro.</div>
-    <div class="warning"><strong>🚫 Mandlige "guider" ved havnen:</strong> Tilbyder alt muligt til overpris. Takket nej roligt.</div>
-    <div class="tip"><strong>💡 Hemmelighed:</strong> Gå I MODSAT retning af turiststrømmen. Baggaderne er tusind gange mere autentiske end Matoyianni.</div>
-    <div class="tip"><strong>💡 Ornos Beach:</strong> Mere rolig strandoplevelse med lokalt præg i stedet for Paradise Beach.</div>
+    <div class="tip"><strong>💡 Madhovedstad:</strong> Thessaloniki er anerkendt som Grækenlands bedste madby. Prøv bougatsa (custard-fyldt wienerbrød) til morgenmad hos Bougatsa Bantis eller Trigona Elenidis.</div>
+    <div class="tip"><strong>💡 Kircherute gratis:</strong> De fleste byzantinske kirker har gratis adgang. Tag en kirke-vandretur – Acheiropoietos, Hagia Sofia, Rotunda er alle inden for 15 minutters gang.</div>
+    <div class="warning"><strong>⚠️ Varme om eftermiddagen:</strong> Juni = 30–35°C. Planlæg museumsbesøg midt på dagen (luftkonditioneret), udendørs tidlig morgen og sen eftermiddag.</div>
+    <div class="info"><strong>ℹ️ Ingen forhåndsbooking nødvendig</strong> til White Tower eller kirker. Kom bare!</div>
   </div>
 
   <!-- Restauranter -->
   <div class="card">
     <div class="card-header">
       <div class="card-icon icon-gold">🍽️</div>
-      <div><div class="card-title">Frokostanbefalinger Mykonos</div></div>
+      <div><div class="card-title">Madanbefalinger Thessaloniki</div></div>
     </div>
     <div class="resto-item">
-      <div class="resto-emoji">🐟</div>
+      <div class="resto-emoji">🥐</div>
       <div>
-        <div class="resto-name">Kounelas Fish Taverna <span style="color:#f5a623">★★★★</span> <span style="font-size:11px;color:#888">1.766 anmeldelser · Siden 1970</span></div>
-        <div class="resto-desc">Nær Old Port · Frisk fisk på dagsbasis · Ingen fastmenu · Lokalt Mykonos-favorit</div>
-        <div class="resto-quote">"Personalet anbefalede et blandet forret-fad – og tog os derefter ind for at se dagens fangst, så vi selv kunne vælge aftensmad. Vi valgte sværdfisk og rød snapper – et fremragende valg. Perfekt tilberedt, mørt og smagfuldt." – TripAdvisor</div>
-        <div class="resto-quote">"Kounelas Fish Tavern er et godt valg hvis man vil have fisk til priser der ikke ruinerer bankkontoen – for Mykonos vel at mærke." – Mykonos Travel Forum</div>
-        <div><span class="resto-price">€€€ · Kom tidligt eller vær klar på at vente</span></div>
+        <div class="resto-name">Bougatsa Bantis <span style="color:#f5a623">★★★★★</span> <span style="font-size:11px;color:#888">Morgenmad-institution</span></div>
+        <div class="resto-desc">Klassisk bougatsa (custard-tærte) · Siden 1960 · Ermou Street · Thessalonikis mest elskede morgenmadssted</div>
+        <div class="resto-quote">"Bougatsa er Thessalonikis svar på morgenmad – og Bantis laver den bedst. Varm, sprød, cremet. Et must første stop fra havnen." – TripAdvisor</div>
+        <div><span class="resto-price">€ · Walk-in · Tidlig morgen</span></div>
         <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g662620-d1101835-Reviews-Kounelas_Fish_Tavern-Mykonos_Town_Mykonos_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
-          <a href="https://maps.google.com/?q=Kounelas+Fish+Taverna+Mykonos" target="_blank" class="btn-link btn-map">📍 Maps</a>
+          <a href="https://maps.google.com/?q=Bougatsa+Bantis+Thessaloniki" target="_blank" class="btn-link btn-map">📍 Maps</a>
         </div>
       </div>
     </div>
 
     <div class="resto-item">
-      <div class="resto-emoji">🥗</div>
+      <div class="resto-emoji">🥩</div>
       <div>
-        <div class="resto-name">Nikos Taverna, Chora <span style="color:#f5a623">★★★★</span></div>
-        <div class="resto-desc">Klassisk gresk · Gode priser for Mykonos · Baggaderne i Chora</div>
-        <div class="resto-quote">"Et pålideligt sted til klassisk gresk mad i Mykonos – til priser der er rimelige i forhold til de fleste andre steder på øen. Maden er enkel og god, atmosfæren afslappet." – TripAdvisor-gæst</div>
-        <div><span class="resto-price">€€ · Walk-in</span></div>
+        <div class="resto-name">Myrovolos Smyrni <span style="color:#f5a623">★★★★½</span> <span style="font-size:11px;color:#888">4.7/5 · Modiano-kvarteret</span></div>
+        <div class="resto-desc">Traditionelt gresk køkken · Nær Modiano · Meze-specialiteter · Meget lokalt publikum</div>
+        <div class="resto-quote">"Autentisk thessalonikisk mad i en restaurant der hverken reklamerer på Instagram eller sælger til turister – men altid er fyldt. Det er altid et godt tegn." – Google anmeldelse</div>
+        <div><span class="resto-price">€€ · Frokost og aften · Anbefal at komme tidligt</span></div>
         <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Restaurant_Review-g662620-d1460024-Reviews-Nikos_Taverna-Mykonos_Town_Mykonos_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
-          <a href="https://maps.google.com/?q=Nikos+Taverna+Mykonos+Town" target="_blank" class="btn-link btn-map">📍 Maps</a>
+          <a href="https://www.tripadvisor.com/Restaurants-g189492-Thessaloniki_Thessaloniki_Region_Central_Macedonia.html" target="_blank" class="btn-link">🟢 TripAdvisor</a>
+          <a href="https://maps.google.com/?q=Myrovolos+Smyrni+Thessaloniki" target="_blank" class="btn-link btn-map">📍 Maps</a>
         </div>
       </div>
     </div>
 
     <div class="resto-item">
-      <div class="resto-emoji">☕</div>
+      <div class="resto-emoji">🍷</div>
       <div>
-        <div class="resto-name">Scarpa Bar, Little Venice <span style="color:#f5a623">★★★★</span></div>
-        <div class="resto-desc">Café direkte ud over Ægæerhavet · Little Venice beliggenhed · Perfekt morgenstemning</div>
-        <div class="resto-quote">"En kaffe her koster hvad den koster – men udsigten er uovertruffen. Balkonerne hænger direkte ud over det turkisblaue Ægæerhav. Det er en del af Mykonos-oplevelsen." – Rejseblog-anmeldelse</div>
-        <div><span class="resto-price">€€€ · Kaffe €6–8 · Men udsigten er det hele værd</span></div>
+        <div class="resto-name">Ladadika kvarteret – generelt <span style="color:#f5a623">★★★★</span></div>
+        <div class="resto-desc">Historisk havnedistrikt · Stensatte gader · Mange restauranter og barer · Aftensstemning</div>
+        <div class="resto-quote">"Ladadika er det sted i Thessaloniki man aldrig vil forlade – charmerende, levende, med restauranter i alle stilarter. Et glas makedonsk vin her som afslutning på dagens tur er nærmest obligatorisk." – rejseblog</div>
+        <div><span class="resto-price">€€ · Alle slags restauranter</span></div>
         <div style="margin-top:6px">
-          <a href="https://www.tripadvisor.com/Attraction_Review-g662620-d12905526-Reviews-Little_Venice_Mykonos-Mykonos_Town_Mykonos_Cyclades_South_Aegean.html" target="_blank" class="btn-link">🟢 TripAdvisor Little Venice</a>
-          <a href="https://maps.google.com/?q=Little+Venice+Mykonos+cafes" target="_blank" class="btn-link btn-map">📍 Maps</a>
+          <a href="https://maps.google.com/?q=Ladadika+Thessaloniki" target="_blank" class="btn-link btn-map">📍 Ladadika</a>
         </div>
       </div>
     </div>
-    <a href="https://maps.google.com/?q=Kounelas+Fish+Taverna+Mykonos" target="_blank" class="btn-link btn-map">📍 Kounelas Taverna</a>
-  </div>
-
-  <!-- Valgfri: Delos -->
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-green">🎟️</div>
-      <div>
-        <div class="card-title">Valgfrit: Delos-tur</div>
-        <div class="card-subtitle">For historiefans – halvdagstur</div>
-      </div>
-    </div>
-    <div class="info">Delos er en hel ø som er UNESCO-verdensarv. Ingen befolkning – kun antikke templer, mosaiker og Løveaveuen. 30 min færge fra Mykonos. Book på forhånd.</div>
-    <a href="https://www.viator.com/Mykonos-tours/Delos/d4234-g10" target="_blank" class="btn-link btn-book">🎟️ Viator – Delos tur</a>
-    <div class="warning"><strong>⚠️ Tidsplan:</strong> Delos tager 4–5 timer total. Passer bedst til dem der springer stranden over.</div>
   </div>
 
   <!-- Wiki -->
   <div class="card">
     <button class="collapse-btn" onclick="toggleCollapse(this)">
-      📖 Om Mykonos – historisk baggrund <span class="arrow">▼</span>
+      📖 Om Thessaloniki – historisk baggrund <span class="arrow">▼</span>
     </button>
     <div class="collapse-content">
       <div class="wiki-box">
-        <div class="wiki-badge">💨 Wikipedia · Dansk oversættelse</div>
-        <h4>Mykonos (Μύκονος)</h4>
-        <p>Mykonos er en ø i De Kykladiske Øer i Det Ægæiske Hav. Øen er kendetegnet ved de hvidkalkede cycladerarkitekturbygninger, smalle brolagte gyder, røde kuppelkirker og de ikoniske vindmøller fra 1500-tallet, som engang møvede hvede og byg til mel for øens befolkning. I dag er de et af Middelhavets mest fotograferede motiver.</p>
-        <p style="margin-top:8px">Den nærliggende ø Delos (10 min med båd) var i oldtiden et af de vigtigste religiøse centre i den græske verden – ifølge mytologien var det her tvillingerne Apollo og Artemis blev født. Øen var hellig og ingen måtte fødes eller dø der. I dag er Delos et af Europas vigtigste arkæologiske områder med templer, agoraer og mosaiker fra 600 f.Kr. til 100 e.Kr.</p>
-        <a href="https://da.wikipedia.org/wiki/Mykonos" target="_blank" class="btn-link">📚 Læs mere på Wikipedia</a>
+        <div class="wiki-badge">🏛️ Wikipedia · Dansk oversættelse</div>
+        <h4>Thessaloniki (Θεσσαλονίκη)</h4>
+        <p>Thessaloniki er Grækenlands næststørste by med ca. 800.000 indbyggere og er Nordgrækenlands kulturelle og kommercielle centrum. Byen blev grundlagt i 315 f.Kr. af makedonerkongen Kassander, som opkaldte den efter sin hustru – en halvsøster til Alexander den Store. I Romerridens tid var Thessaloniki en af rigets vigtigste byer og lå på Via Egnatia – den store øst-vest-handelsvej.</p>
+        <p style="margin-top:8px">Byen har 15 paleo-kristne og byzantinske monumenter på UNESCOs verdensarvsliste, herunder Rotunda fra 300-tallet, Hagia Sophia fra 700-tallet og Hosios David-mosaikker fra 500-tallet. Under det Byzantinske Rige var Thessaloniki "Rigets anden by" og et af dets vigtigste kulturelle centre. Apostlen Paulus besøgte og grundlagde en menighed her, som han sendte to breve til (1. og 2. Thessalonikerbrev).</p>
+        <a href="https://da.wikipedia.org/wiki/Thessaloniki" target="_blank" class="btn-link">📚 Læs mere på Wikipedia</a>
       </div>
     </div>
+  </div>
+
+  <div class="card">
+    <div class="section-label">Nyttige links</div>
+    <a href="https://maps.google.com/?q=White+Tower+Thessaloniki" target="_blank" class="btn-link btn-map">📍 White Tower</a>
+    <a href="https://maps.google.com/?q=Rotunda+Thessaloniki" target="_blank" class="btn-link btn-map">📍 Rotunda</a>
+    <a href="https://maps.google.com/?q=Ano+Poli+Thessaloniki" target="_blank" class="btn-link btn-map">📍 Ano Poli</a>
+    <a href="https://maps.google.com/?q=Modiano+Market+Thessaloniki" target="_blank" class="btn-link btn-map">📍 Modiano Marked</a>
+    <a href="https://maps.google.com/?q=Ladadika+Thessaloniki" target="_blank" class="btn-link btn-map">📍 Ladadika</a>
+  </div>
+</div>
+<!-- ==================== VEJR ==================== -->
+<div id="page-weather" class="page">
+  <div class="port-header" style="background: linear-gradient(135deg, #0c6e8c, #1a8fa8);">
+    <h2>🌤️ Vejrudsigt</h2>
+    <div style="font-size:13px;opacity:.85;margin-top:4px;">Live data · Opdateres automatisk</div>
+  </div>
+
+  <div id="weather-loading" class="card" style="text-align:center;padding:32px">
+    <div style="font-size:32px;margin-bottom:8px">🌊</div>
+    <div style="color:var(--text-light);font-size:13px">Henter vejrudsigt...</div>
+  </div>
+
+  <div id="weather-offline-banner" class="warning" style="display:none">
+    <strong>📵 Offline:</strong> Viser sidst cachede vejrdata. Forbind til internet for opdatering.
+  </div>
+
+  <div id="weather-grid" style="display:none"></div>
+
+  <div class="card" style="margin-top:8px">
+    <div class="info" style="font-size:12px">
+      <strong>ℹ️ Kilde:</strong> Open-Meteo (gratis, ingen API-nøgle). Data caches lokalt – virker delvist offline. <br>
+      <strong>Opdateres:</strong> Hver gang siden indlæses med internetforbindelse.
+    </div>
+    <div id="weather-updated" style="font-size:11px;color:var(--text-light);margin-top:8px"></div>
   </div>
 </div>
 
@@ -1854,44 +953,24 @@
     <h2>🎒 Pakkeliste</h2>
     <div style="font-size:13px;opacity:.85;margin-top:4px;">Hak af efterhånden som I pakker</div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-red">☀️</div>
-      <div><div class="card-title">Solbeskyttelse & vejr</div></div>
-    </div>
+    <div class="card-header"><div class="card-icon icon-red">☀️</div><div><div class="card-title">Solbeskyttelse & vejr</div></div></div>
     <div id="checklist-sun"></div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-sea">👟</div>
-      <div><div class="card-title">Fodtøj & vandring</div></div>
-    </div>
+    <div class="card-header"><div class="card-icon icon-sea">👟</div><div><div class="card-title">Fodtøj & vandring</div></div></div>
     <div id="checklist-shoes"></div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">👗</div>
-      <div><div class="card-title">Tøj & krydstogt</div></div>
-    </div>
+    <div class="card-header"><div class="card-icon icon-gold">👗</div><div><div class="card-title">Tøj & krydstogt</div></div></div>
     <div id="checklist-clothes"></div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-green">📱</div>
-      <div><div class="card-title">Tech & praktisk</div></div>
-    </div>
+    <div class="card-header"><div class="card-icon icon-green">📱</div><div><div class="card-title">Tech & praktisk</div></div></div>
     <div id="checklist-tech"></div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">💳</div>
-      <div><div class="card-title">Penge & dokumenter</div></div>
-    </div>
+    <div class="card-header"><div class="card-icon icon-gold">💳</div><div><div class="card-title">Penge & dokumenter</div></div></div>
     <div id="checklist-money"></div>
   </div>
 </div>
@@ -1902,107 +981,49 @@
     <h2>💡 Generelle rejsetips</h2>
     <div style="font-size:13px;opacity:.85;margin-top:4px;">For 2 voksne aktive rejsende</div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-sea">⚓</div>
-      <div><div class="card-title">Krydstogt generelle regler</div></div>
-    </div>
-    <div class="tip"><strong>🕐 Altid 90 min buffer:</strong> Vær altid ved skibet senest 90 min før afgang. Tender-havne kan have kø. Skibet venter ikke.</div>
-    <div class="tip"><strong>🛥️ Tender timing:</strong> I tender-havne (Santorini + evt. Mykonos): vær i tender-køen tidligst muligt morgenen i havn. Første tender giver bedst dag.</div>
-    <div class="info"><strong>💳 Skibskortet:</strong> Jeres Sea Pass/skibskort er identifikation i havn. Tag det altid med. Aftaler med skibet betales via kortet.</div>
-    <div class="warning"><strong>⚠️ Taler skibet venter?</strong> Kun hvis I har bookede skibsekskursioner! Uafhængige ture: skibet VENTER IKKE. Vær tidsnok.</div>
+    <div class="card-header"><div class="card-icon icon-sea">⚓</div><div><div class="card-title">Krydstogt generelle regler</div></div></div>
+    <div class="tip"><strong>🕐 Altid 90 min buffer:</strong> Vær altid ved skibet senest 90 min før afgang. Skibet venter ikke.</div>
+    <div class="tip"><strong>🛥️ Tender timing:</strong> I tender-havne (Santorini + Mykonos): vær i tender-køen tidligst muligt om morgenen.</div>
+    <div class="info"><strong>💳 Skibskortet:</strong> Jeres Sea Pass er identifikation i havn. Tag det altid med.</div>
+    <div class="warning"><strong>⚠️ Skibet venter ikke</strong> ved uafhængige ture! Kun ved bookede skibsekskursioner.</div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-gold">💰</div>
-      <div><div class="card-title">Budget & penge</div></div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">Santorini (frokost + cable car x2)</div>
-      <div class="t-val">~€60–80 pp</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">Rhodos (museum + frokost)</div>
-      <div class="t-val">~€50–70 pp</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">Kusadasi (Efesos + guide + frokost)</div>
-      <div class="t-val">~€100–150 pp</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">Mykonos (SeaBus + frokost + kaffe)</div>
-      <div class="t-val">~€60–100 pp</div>
-    </div>
-    <div class="tip"><strong>💡 Cash:</strong> Tag kontanter i EUR. Santorini cable car: cash only. Tyrkiet: tyrkiske lira for bedre priser.</div>
+    <div class="card-header"><div class="card-icon icon-gold">💰</div><div><div class="card-title">Budget & penge</div></div></div>
+    <div class="transport-row"><div class="t-label">Santorini (frokost + cable car)</div><div class="t-val">~€60–80 pp</div></div>
+    <div class="transport-row"><div class="t-label">Rhodos (museum + frokost)</div><div class="t-val">~€50–70 pp</div></div>
+    <div class="transport-row"><div class="t-label">Kusadasi (Efesos + guide + frokost)</div><div class="t-val">~€100–150 pp</div></div>
+    <div class="transport-row"><div class="t-label">Mykonos (SeaBus + frokost + kaffe)</div><div class="t-val">~€60–100 pp</div></div>
+    <div class="transport-row"><div class="t-label">Thessaloniki (White Tower + frokost)</div><div class="t-val">~€30–60 pp</div></div>
+    <div class="tip"><strong>💡 Cash:</strong> Tag kontanter i EUR. Santorini cable car: cash only.</div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-red">🌡️</div>
-      <div><div class="card-title">Vejr i juni</div></div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">Temperatur dagtemp.</div>
-      <div class="t-val">28–35°C</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">Sol i Santorini/Rhodos</div>
-      <div class="t-val">12–14 timers sol</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">Meltemi-vind (Mykonos)</div>
-      <div class="t-val">Kan være stærk!</div>
-    </div>
-    <div class="warning"><strong>⚠️ Solbrand risiko:</strong> Juni = stærk sol. Mindst SPF50. Solhat er ikke til forhandling. Drik 1,5–2 L vand pr. person pr. dag.</div>
+    <div class="card-header"><div class="card-icon icon-red">🌡️</div><div><div class="card-title">Vejr i juni</div></div></div>
+    <div class="transport-row"><div class="t-label">Temperatur dagtemp.</div><div class="t-val">28–35°C</div></div>
+    <div class="transport-row"><div class="t-label">Meltemi-vind (Mykonos)</div><div class="t-val">Kan være stærk!</div></div>
+    <div class="warning"><strong>⚠️ Solbrand risiko:</strong> Mindst SPF50. Drik 1,5–2 L vand pr. person pr. dag.</div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-green">📱</div>
-      <div><div class="card-title">Nyttige Apps</div></div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🗺️ Google Maps offline</div>
-      <div class="t-val">Download alle øer FØR</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🎧 Rick Steves Audio Tours</div>
-      <div class="t-val">Gratis · Efesos + Athen</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🚢 MarineTraffic</div>
-      <div class="t-val">Tjek andre skibe i havn</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">💱 XE Currency</div>
-      <div class="t-val">EUR ↔ TRY i Tyrkiet</div>
-    </div>
-    <div class="transport-row">
-      <div class="t-label">🌐 Roaming / eSIM</div>
-      <div class="t-val">Check med jeres udbyder!</div>
-    </div>
-    <div class="warning"><strong>⚠️ Tyrkiet roaming:</strong> Tyrkiet er IKKE EU. Tjek om I har fri roaming eller køb eSIM (Airalo anbefales).</div>
+    <div class="card-header"><div class="card-icon icon-green">📱</div><div><div class="card-title">Nyttige Apps</div></div></div>
+    <div class="transport-row"><div class="t-label">🗺️ Google Maps offline</div><div class="t-val">Download alle øer FØR</div></div>
+    <div class="transport-row"><div class="t-label">🎧 Rick Steves Audio Tours</div><div class="t-val">Gratis · Efesos + Athen</div></div>
+    <div class="transport-row"><div class="t-label">🚢 MarineTraffic</div><div class="t-val">Tjek andre skibe i havn</div></div>
+    <div class="transport-row"><div class="t-label">💱 XE Currency</div><div class="t-val">EUR ↔ TRY i Tyrkiet</div></div>
+    <div class="warning"><strong>⚠️ Tyrkiet roaming:</strong> Tyrkiet er IKKE EU. Tjek roaming eller køb eSIM (Airalo).</div>
   </div>
-
   <div class="card">
-    <div class="card-header">
-      <div class="card-icon icon-sea">🍷</div>
-      <div><div class="card-title">Mad & vin highlights</div></div>
-    </div>
-    <div class="check-item"><div>🍷 <strong>Assyrtiko-vin</strong> – Santorinis mineralske lokale vin. Smag den ved kilden i Oia/Fira.</div></div>
-    <div class="check-item"><div>🐙 <strong>Grillet blæksprutte</strong> – En klassiker i alle greske havne. Frisk og simpel.</div></div>
-    <div class="check-item"><div>🫒 <strong>Gresk salat</strong> – Den rigtige (horiatiki) er anderledes end herhjemme. Tyk feta, ingen laktose.</div></div>
+    <div class="card-header"><div class="card-icon icon-sea">🍷</div><div><div class="card-title">Mad & vin highlights</div></div></div>
+    <div class="check-item"><div>🍷 <strong>Assyrtiko-vin</strong> – Santorinis mineralske lokale vin.</div></div>
+    <div class="check-item"><div>🐙 <strong>Grillet blæksprutte</strong> – En klassiker i alle greske havne.</div></div>
+    <div class="check-item"><div>🫒 <strong>Gresk salat</strong> – Den rigtige (horiatiki) med tyk feta.</div></div>
     <div class="check-item"><div>🧆 <strong>Meze</strong> – Gresk tapas. Bestil mange småretter og del dem.</div></div>
-    <div class="check-item"><div>☕ <strong>Freddo Espresso</strong> – Iskoldt stærkt kaffe. Athen-specialitet. Prøv det!</div></div>
-    <div class="check-item"><div>🫖 <strong>Tyrkisk çay</strong> – Rød te serveret i tulipanglas. Gratis overalt i Kusadasi.</div></div>
-    <div class="check-item"><div>🍬 <strong>Loukoumades</strong> – Greske honning-donuts. Gadesælgere i Athen og Mykonos.</div></div>
+    <div class="check-item"><div>☕ <strong>Freddo Espresso</strong> – Iskoldt stærkt kaffe. Athen-specialitet.</div></div>
+    <div class="check-item"><div>🫖 <strong>Tyrkisk çay</strong> – Rød te i tulipanglas. Gratis overalt i Kusadasi.</div></div>
+    <div class="check-item"><div>🥐 <strong>Bougatsa</strong> – Thessalonikis custard-tærte. Prøv til morgenmad!</div></div>
   </div>
-
-  <div class="card" style="text-align:center;background: linear-gradient(135deg,var(--sea-dark),var(--sea));color:white">
+  <div class="card" style="text-align:center;background:linear-gradient(135deg,var(--sea-dark),var(--sea));color:white">
     <div style="font-size:36px;margin-bottom:8px">🥂</div>
-    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700">God rejse, Bo!</div>
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700">God rejse, Sanne & Bo!</div>
     <div style="font-size:13px;opacity:.85;margin-top:6px">Må det blive en tur I aldrig glemmer – fuld af sol, gode vine, antik marmor og Ægæerhavets blå blik 🌊</div>
     <div style="font-size:12px;opacity:.6;margin-top:12px">Opdateret maj 2026 · Alle priser vejledende</div>
   </div>
@@ -2014,7 +1035,7 @@ function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
-  const idx = ['overview','athens','santorini','rhodes','kusadasi','mykonos','packing','tips'];
+  const idx = ['overview','athens','santorini','rhodes','kusadasi','mykonos','thessaloniki','packing','tips','weather'];
   document.querySelectorAll('.nav-btn')[idx.indexOf(id)]?.classList.add('active');
   window.scrollTo(0, 0);
 }
@@ -2022,8 +1043,7 @@ function showPage(id) {
 // COLLAPSE
 function toggleCollapse(btn) {
   btn.classList.toggle('open');
-  const content = btn.nextElementSibling;
-  content.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
 }
 
 // CHECKLIST DATA
@@ -2048,7 +1068,6 @@ const checklists = {
     'Badehåndklæde (lille – til stranden)',
     'Let vindfrakke / cardigan (skibsklima er kold!)',
     'Beige/neutrale farver til historiske steder (respekt)',
-    'Sportsbh / komfort til vandreture',
   ],
   tech: [
     'Mobil + oplader',
@@ -2073,7 +1092,6 @@ const checklists = {
 };
 
 const checkState = {};
-
 Object.entries(checklists).forEach(([key, items]) => {
   const container = document.getElementById('checklist-' + key);
   if (!container) return;
@@ -2088,6 +1106,166 @@ Object.entries(checklists).forEach(([key, items]) => {
       div.classList.toggle('checked', this.checked);
     });
     container.appendChild(div);
+  });
+});
+
+// ==================== WEATHER SYSTEM ====================
+const WEATHER_LOCATIONS = [
+  { id: 'athens',       name: 'Athen',        flag: '🇬🇷', date: '11–13 jun', lat: 37.9838,  lon: 23.7275 },
+  { id: 'santorini',    name: 'Santorini',    flag: '🌋',  date: '14 jun',    lat: 36.3932,  lon: 25.4615 },
+  { id: 'rhodes',       name: 'Rhodos',       flag: '⚔️', date: '15 jun',    lat: 36.4341,  lon: 28.2176 },
+  { id: 'kusadasi',     name: 'Kusadasi',     flag: '🇹🇷', date: '16 jun',    lat: 37.8560,  lon: 27.2590 },
+  { id: 'mykonos',      name: 'Mykonos',      flag: '💨',  date: '17 jun',    lat: 37.4415,  lon: 25.3283 },
+  { id: 'thessaloniki', name: 'Thessaloniki', flag: '🏛️', date: '18 jun',    lat: 40.6401,  lon: 22.9444 },
+];
+
+const WEATHER_CACHE_KEY = 'krydstogt_weather_v1';
+const WEATHER_CACHE_TTL = 3 * 60 * 60 * 1000; // 3 hours
+
+function weatherCodeToIcon(code) {
+  if (code === 0)  return { emoji: '☀️', desc: 'Klart' };
+  if (code <= 2)   return { emoji: '🌤️', desc: 'Let skyet' };
+  if (code <= 3)   return { emoji: '☁️', desc: 'Skyet' };
+  if (code <= 49)  return { emoji: '🌫️', desc: 'Tåge' };
+  if (code <= 59)  return { emoji: '🌦️', desc: 'Let regn' };
+  if (code <= 69)  return { emoji: '🌧️', desc: 'Regn' };
+  if (code <= 79)  return { emoji: '🌨️', desc: 'Sne' };
+  if (code <= 84)  return { emoji: '🌦️', desc: 'Regnbyger' };
+  if (code <= 99)  return { emoji: '⛈️', desc: 'Tordenvejr' };
+  return { emoji: '🌡️', desc: 'Ukendt' };
+}
+
+const CRUISE_DATES = {
+  athens:       ['2026-06-11', '2026-06-12'],
+  santorini:    ['2026-06-14'],
+  rhodes:       ['2026-06-15'],
+  kusadasi:     ['2026-06-16'],
+  mykonos:      ['2026-06-17'],
+  thessaloniki: ['2026-06-18'],
+};
+
+function renderWeatherCard(loc, weatherData) {
+  const daily = weatherData.daily;
+  const daysHtml = CRUISE_DATES[loc.id].map(dateStr => {
+    const idx = daily.time.findIndex(d => d === dateStr);
+    if (idx === -1) return `<div style="flex:1;min-width:110px;background:#f8f8f8;border-radius:12px;padding:12px;text-align:center;border:1px solid #eee"><div style="font-size:11px;color:var(--text-light)">${dateStr}</div><div style="font-size:13px;margin-top:8px">Data ikke tilgængelig endnu</div></div>`;
+    const max  = Math.round(daily.temperature_2m_max[idx]);
+    const min  = Math.round(daily.temperature_2m_min[idx]);
+    const code = daily.weathercode[idx];
+    const wind = Math.round(daily.windspeed_10m_max[idx]);
+    const rain = daily.precipitation_sum[idx];
+    const { emoji, desc } = weatherCodeToIcon(code);
+    const dateObj = new Date(dateStr);
+    const dayName = dateObj.toLocaleDateString('da-DK', { weekday: 'short', day: 'numeric', month: 'short' });
+    return `
+      <div style="flex:1;min-width:110px;background:#f8fbfd;border-radius:12px;padding:12px;text-align:center;border:1px solid #e0eff5">
+        <div style="font-size:11px;color:var(--text-light);font-weight:600;margin-bottom:4px">${dayName}</div>
+        <div style="font-size:36px;line-height:1.1">${emoji}</div>
+        <div style="font-size:12px;color:var(--text-light);margin:2px 0">${desc}</div>
+        <div style="font-size:20px;font-weight:700;color:var(--sea-dark);margin:6px 0">${max}°C</div>
+        <div style="font-size:11px;color:var(--text-light)">nat: ${min}°C</div>
+        <div style="font-size:11px;margin-top:6px;color:#555">💨 ${wind} km/t</div>
+        <div style="font-size:11px;color:${rain > 1 ? '#e04e2e' : '#2a8c5a'}">${rain > 0.2 ? '🌧️ ' + rain.toFixed(1) + ' mm' : '☀️ Tørt'}</div>
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="card" style="margin-bottom:12px">
+      <div class="card-header" style="margin-bottom:10px">
+        <div style="font-size:28px">${loc.flag}</div>
+        <div><div class="card-title">${loc.name}</div><div class="card-subtitle">${loc.date}</div></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">${daysHtml}</div>
+    </div>`;
+}
+
+function renderWeatherFromData(data, grid) {
+  grid.innerHTML = WEATHER_LOCATIONS.map(loc => renderWeatherCard(loc, data[loc.id])).join('');
+}
+
+async function fetchWeatherForLocation(loc) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=temperature_2m_max,temperature_2m_min,weathercode,windspeed_10m_max,precipitation_sum&timezone=Europe%2FAthens&forecast_days=16`;
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error('HTTP ' + resp.status);
+  return resp.json();
+}
+
+async function loadWeather() {
+  const grid          = document.getElementById('weather-grid');
+  const loading       = document.getElementById('weather-loading');
+  const offlineBanner = document.getElementById('weather-offline-banner');
+  const updatedEl     = document.getElementById('weather-updated');
+
+  // Try fresh cache first (within TTL)
+  try {
+    const raw = localStorage.getItem(WEATHER_CACHE_KEY);
+    if (raw) {
+      const { data, timestamp } = JSON.parse(raw);
+      const age = Date.now() - timestamp;
+      if (age < WEATHER_CACHE_TTL) {
+        renderWeatherFromData(data, grid);
+        loading.style.display = 'none';
+        grid.style.display = 'block';
+        updatedEl.textContent = `Sidst opdateret for ${Math.round(age / 60000)} min siden`;
+        return;
+      }
+    }
+  } catch(e) {}
+
+  // Offline fallback
+  if (!navigator.onLine) {
+    try {
+      const raw = localStorage.getItem(WEATHER_CACHE_KEY);
+      if (raw) {
+        const { data, timestamp } = JSON.parse(raw);
+        renderWeatherFromData(data, grid);
+        loading.style.display = 'none';
+        grid.style.display = 'block';
+        offlineBanner.style.display = 'block';
+        const d = new Date(timestamp);
+        updatedEl.textContent = `Sidst opdateret: ${d.toLocaleDateString('da-DK')} kl. ${d.toLocaleTimeString('da-DK',{hour:'2-digit',minute:'2-digit'})}`;
+        return;
+      }
+    } catch(e) {}
+    loading.innerHTML = '<div style="font-size:32px;margin-bottom:8px">📵</div><div style="color:var(--text-light);font-size:13px">Ingen internetforbindelse og ingen cached data.<br>Åbn vejr-siden med internet for at hente forecast.</div>';
+    return;
+  }
+
+  // Fetch live
+  try {
+    const results = {};
+    for (const loc of WEATHER_LOCATIONS) {
+      results[loc.id] = await fetchWeatherForLocation(loc);
+    }
+    localStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify({ data: results, timestamp: Date.now() }));
+    renderWeatherFromData(results, grid);
+    loading.style.display = 'none';
+    grid.style.display = 'block';
+    updatedEl.textContent = `Opdateret: ${new Date().toLocaleTimeString('da-DK',{hour:'2-digit',minute:'2-digit'})}`;
+  } catch(err) {
+    loading.innerHTML = `<div style="font-size:32px;margin-bottom:8px">⚠️</div><div style="color:var(--text-light);font-size:13px">Kunne ikke hente vejrdata: ${err.message}<br>Prøv igen om lidt.</div>`;
+  }
+}
+
+// Trigger weather load when the weather page becomes visible
+const _weatherObserver = new MutationObserver(() => {
+  const page = document.getElementById('page-weather');
+  if (page && page.classList.contains('active')) {
+    _weatherObserver.disconnect();
+    loadWeather();
+  }
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const target = document.getElementById('page-weather');
+  if (target) _weatherObserver.observe(target, { attributes: true, attributeFilter: ['class'] });
+  // Also handle re-visits
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setTimeout(() => {
+        const page = document.getElementById('page-weather');
+        if (page && page.classList.contains('active')) loadWeather();
+      }, 50);
+    });
   });
 });
 </script>
